@@ -10,7 +10,7 @@ public class MotoController {
 
     @GetMapping("/moto/lista")
     public String getindex (HttpServletRequest request){
-        return "/moto/lista"; // "index" = pagina jsp dentro do template //spring.thymeleaf.prefix=classpath:/templates/
+        return "/moto/lista";
     }
 
 

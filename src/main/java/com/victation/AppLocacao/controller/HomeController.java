@@ -11,7 +11,7 @@ public class HomeController {
     @GetMapping("/home")
     public String getindex (HttpServletRequest request){
         request.setAttribute("nome", "Victor");
-        return "home"; // "index" = pagina jsp dentro do template //spring.thymeleaf.prefix=classpath:/templates/
+        return "home";
     }
 
 

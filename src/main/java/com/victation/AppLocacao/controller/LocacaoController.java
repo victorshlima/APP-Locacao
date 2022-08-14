@@ -10,7 +10,7 @@ public class LocacaoController {
 
     @GetMapping("/locacao/lista")
     public String getindex (HttpServletRequest request){
-        return "/locacao/lista"; // "index" = pagina jsp dentro do template //spring.thymeleaf.prefix=classpath:/templates/
+        return "/locacao/lista";
     }
 
 

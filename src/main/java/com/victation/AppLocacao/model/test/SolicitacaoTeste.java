@@ -1,4 +1,4 @@
-package com.victation.AppLocacao;
+package com.victation.AppLocacao.model.test;
 
 import com.victation.AppLocacao.model.domain.Locacao;
 import org.springframework.boot.ApplicationArguments;
