@@ -8,7 +8,9 @@ import java.time.LocalDateTime;
 public class Locacao {
 
     private String descricao;
-    private LocalDateTime data;
+    private LocalDateTime dataLocacao;
+    private LocalDateTime dataDevolucao;
+    private Automovel automovel;
     private boolean web;
 
 }
