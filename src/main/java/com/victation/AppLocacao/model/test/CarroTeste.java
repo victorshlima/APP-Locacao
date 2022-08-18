@@ -1,5 +1,6 @@
 package com.victation.AppLocacao.model.test;
 
+import com.victation.AppLocacao.controller.CarroController;
 import com.victation.AppLocacao.model.domain.Carro;
 import com.victation.AppLocacao.model.domain.Moto;
 import org.springframework.boot.ApplicationArguments;
@@ -18,25 +19,48 @@ public class CarroTeste implements ApplicationRunner  {
 
         Carro c1 = new Carro();
         c1.setValor(100F);
+        c1.setChassi(123234344);
+        c1.setCilindradas(100);
+        c1.setModelo("YBR");
+        c1.setLotacao(2);
+        c1.setMarca("YAMAHA");
+        c1.setPlaca("PLCA123");
+        c1.setQtdVeiculos(1);
+        c1.setQtdVeiculosDisponiveis(1);
+        c1.setValor(100F);
         c1.setPortas(2);
-       // System.out.println(c1);
 
-       AppLocacao.relatorio("Carro ", c1);
+       CarroController.incluir(c1);
 
         Carro c2 = new Carro();
-        c2.setValor(150F);
-        c1.setPortas(4);
-       // System.out.println(c2);
+        c2.setValor(100F);
+        c2.setChassi(12423844);
+        c2.setCilindradas(100);
+        c2.setModelo("YBR");
+        c2.setLotacao(2);
+        c2.setMarca("YAMAHA");
+        c2.setPlaca("PLCA321");
+        c2.setQtdVeiculos(1);
+        c2.setQtdVeiculosDisponiveis(1);
+        c2.setValor(100F);
+        c2.setPortas(2);
 
-        AppLocacao.relatorio("Carro ", c2);
+        CarroController.incluir(c2);
 
         Carro c3 = new Carro();
-        c1.setPortas(2);
-        c3.setValor(300F);
-        //System.out.println(c3);
+        c3.setValor(100F);
+        c3.setChassi(123234333);
+        c3.setCilindradas(100);
+        c3.setModelo("YBR");
+        c3.setLotacao(2);
+        c3.setMarca("YAMAHA");
+        c3.setPlaca("PLCA1233");
+        c3.setQtdVeiculos(1);
+        c3.setQtdVeiculosDisponiveis(1);
+        c3.setValor(100F);
+        c3.setPortas(2);
 
-
-        AppLocacao.relatorio("Carro ", c3);
+        CarroController.incluir(c3);
 
     }
 

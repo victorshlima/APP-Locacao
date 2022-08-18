@@ -1,9 +1,16 @@
 package com.victation.AppLocacao.model.domain;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Caminhao extends Automovel{
 
      //http://www.guiadotrc.com.br/noticias/noticiaID.asp?id=36008
@@ -19,7 +26,7 @@ public class Caminhao extends Automovel{
 
     @Override
     public String toString() {
-        return "Caminhao{" +
+        return "\nCaminhao{" +
                 "tipo='" + tipo + '\'' +
                 ", eixos=" + eixos +
                 ", capacidadeCarga=" + capacidadeCarga +

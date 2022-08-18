@@ -17,6 +17,13 @@ repositories {
 }
 
 dependencies {
+
+
+    //ERRO ao importar  - Cause: unable to find valid certification path to requested target
+    //implementation 'javax.servlet:jstl'
+    //implementation 'javax.servlet:jstl:1.2'
+   // implementation 'javax.servlet.jsp.jstl:jstl:1.2'
+   // implementation 'taglibs:standard:1.1.2'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:10.1.0-M17'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-autoconfigure:2.6.6'

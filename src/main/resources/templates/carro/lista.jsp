@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,6 +42,7 @@
     <table class="table table-dark table-striped">
         <thead>
         <tr>
+            <th>ID</th>
             <th>marca</th>
             <th>modelo</th>
             <th>Portas</th>
@@ -49,36 +52,21 @@
             <th>lotacao</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>GOL</td>
-            <td>Bola</td>
-            <td>2</td>
-            <td>1.2</td>
-            <td>CHASSI00011231321</td>
-            <td>PLACA-Y293</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>Ford</td>
-            <td>Bola</td>
-            <td>2</td>
-            <td>1.2</td>
-            <td>CHASSI00011287978</td>
-            <td>PLACA-F0D4</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>BMW</td>
-            <td>Bola</td>
-            <td>4</td>
-            <td>1.2</td>
-            <td>CHASSI0001127897891</td>
-            <td>PLACA-M1W1</td>
-            <td>5</td>
+    <tbody>
+        <!--/*@thymesVar id="carroLista" type="java"*/-->
+        <tr th:each="carro: ${carroLista}">
+            <td th:text="${carro.id}"></td>
+            <td th:text="${carro.marca}"></td>
+            <td th:text="${carro.modelo}" ></td>
+            <td th:text="${carro.portas}" ></td>
+            <td th:text="${carro.cilindradas}" ></td>
+            <td th:text="${carro.chassi}" ></td>
+            <td th:text="${carro.placa}" ></td>
+            <td th:text="${carro.lotacao}" ></td>
         </tr>
 
-        </tbody>
+    </tbody>
+
     </table>
 </div>
 </body>

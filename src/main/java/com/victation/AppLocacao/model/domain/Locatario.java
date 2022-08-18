@@ -2,10 +2,12 @@ package com.victation.AppLocacao.model.domain;
 
 
 import com.victation.AppLocacao.interfaces.IPrinter;
-import lombok.AllArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
-@ToString
+
+@Data
+@Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class Locatario implements IPrinter {
 
@@ -18,5 +20,15 @@ public class Locatario implements IPrinter {
     public void impressao() {
         System.out.println("#Locatario");
         System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        return "\nLocatario{" +
+                "nome='" + nome + '\'' +
+                ", sobrenome='" + sobrenome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

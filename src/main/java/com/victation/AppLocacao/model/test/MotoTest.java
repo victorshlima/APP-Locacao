@@ -27,7 +27,7 @@ public class MotoTest implements ApplicationRunner {
         m1.setQtdVeiculos(1);
         m1.setQtdVeiculosDisponiveis(1);
 
-        System.out.println(m1);
+        AppLocacao.relatorio("",m1);
 
         Moto m2 = new Moto();
         m2.setValor(150F);
@@ -38,7 +38,8 @@ public class MotoTest implements ApplicationRunner {
         m2.setPlaca("PLCA");
         m2.setQtdVeiculos(1);
         m2.setQtdVeiculosDisponiveis(1);
-        System.out.println(m2);
+
+        AppLocacao.relatorio("",m2);
 
         Moto m3 = new Moto();
         m3.setValor(300F);
@@ -48,9 +49,8 @@ public class MotoTest implements ApplicationRunner {
         m3.setPlaca("PLCA");
         m3.setQtdVeiculos(1);
         m3.setQtdVeiculosDisponiveis(1);
-        System.out.println(m2);
 
-        System.out.println(m3);
+        AppLocacao.relatorio("",m3);
 
     }
 }
