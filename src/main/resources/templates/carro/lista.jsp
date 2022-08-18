@@ -50,6 +50,7 @@
             <th>chassi</th>
             <th>placa</th>
             <th>lotacao</th>
+            <th></th>
         </tr>
         </thead>
     <tbody>
@@ -63,6 +64,9 @@
             <td th:text="${carro.chassi}" ></td>
             <td th:text="${carro.placa}" ></td>
             <td th:text="${carro.lotacao}" ></td>
+            <td>
+                <a th:href="@{/carro/{id}/excluir(id=${carro.id})}">excluir</a>
+            </td>
         </tr>
 
     </tbody>
