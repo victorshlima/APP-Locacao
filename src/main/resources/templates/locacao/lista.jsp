@@ -36,14 +36,14 @@
 
 <div class="container mt-3">
 
-    <h3>Classe: Empréstimo</h3>
+    <h3>Classe: Emprï¿½stimo</h3>
     <table class="table table-dark table-striped">
         <thead>
         <tr>
             <th>Descricao</th>
             <th>DataLocacao</th>
             <th>Data Devolucao</th>
-            <th>ID Automovel</th>
+            <th>ID Automovel d</th>
         </tr>
         </thead>
         <tbody>
@@ -60,7 +60,7 @@
             <td>IDCAR0910293</td>
         </tr>
         <tr>
-            <td>CAminhão - Modelo X, placata Y com risco na pintura </td>
+            <td>CAminhï¿½o - Modelo X, placata Y com risco na pintura </td>
             <td>05/08/2022T01:01:0001</td>
             <td>09/08/2022T01:01:0001</td>
             <td>IDCAR0910293</td>
