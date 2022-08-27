@@ -17,38 +17,37 @@ public class AppImpressao {
 
 	public static void main (String[] args)   {
 
-		String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
+
+
+
+		String systemDir = System.getProperty("user.dir");
+		System.out.println(systemDir);
+		String dir = systemDir+"//dev//";
 		String arq = "locacoes.txt";
 		String fileName =dir + arq;
 		System.out.println(fileName);
 
 
 		try {
-			try {
-				FileReader fileReader = new FileReader(fileName);
-				BufferedReader leitura = new BufferedReader(fileReader);
+			FileReader fileReader = new FileReader(fileName);
+			BufferedReader leitura = new BufferedReader(fileReader);
 
-				String linha =  null;
-				while ((linha = leitura.readLine()) != null){
-					linha = leitura.readLine();
+			String linha =  null;
+			while ((linha = leitura.readLine()) != null){
 					System.out.println(linha);
 				}
-				System.out.println(leitura.readLine());
-				leitura.close();
-				fileReader.close();
+			fileReader.close();
+			leitura.close();
+
 			} catch (FileNotFoundException e) {
 				System.out.println("[ERRO] O arquivo não existe!!!");
 				e.printStackTrace();
 			} catch (IOException e){
 				System.out.println("[ERRO] erro ao fechar o reader");
 			}
-		}
-		catch (Exception e){
 
-		}
-		finally {
-			System.out.println("terminou");
-		}
+
+
 
 
 

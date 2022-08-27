@@ -106,9 +106,7 @@ public class LocacaoTeste implements ApplicationRunner {
                     }
 
                 }
-
                 System.out.println(leitura.readLine());
-
                 fileReader.close();
                 leitura.close();
             } catch (FileNotFoundException e) {

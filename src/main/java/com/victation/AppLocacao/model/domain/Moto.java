@@ -1,10 +1,40 @@
 package com.victation.AppLocacao.model.domain;
 
 
-import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInvalidoException;
+
 import com.victation.AppLocacao.model.domain.exeptions.ValorMotoInvalidoException;
 
+import java.time.LocalDateTime;
+
 public class Moto extends Automovel {
+
+    private int peso;
+    private LocalDateTime ano;
+    private String  tipoRoda;
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
+    public LocalDateTime getAno() {
+        return ano;
+    }
+
+    public void setAno(LocalDateTime ano) {
+        this.ano = ano;
+    }
+
+    public String getTipoRoda() {
+        return tipoRoda;
+    }
+
+    public void setTipoRoda(String tipoRoda) {
+        this.tipoRoda = tipoRoda;
+    }
 
     @Override
     public float calcularValorLocacao() throws ValorMotoInvalidoException {
