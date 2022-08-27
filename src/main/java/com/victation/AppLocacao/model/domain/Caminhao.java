@@ -1,6 +1,7 @@
 package com.victation.AppLocacao.model.domain;
 
 
+import com.victation.AppLocacao.model.domain.exeptions.ValorEixosInvalidoException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,8 +22,12 @@ public class Caminhao extends Automovel{
 
 
     @Override
-    public float calcularValorLocacao()
-    {  return  getEixos() > 2 ?  valor * 4.5f  :  valor * 1.5f;  };
+    public float calcularValorLocacao() throws ValorEixosInvalidoException {
+        if(eixos < 6){
+            throw new ValorEixosInvalidoException("Eixos: " +eixos + " maior que 6, quantidade invalida");
+        }
+
+        return  getEixos() > 2 ?  valor * 4.5f  :  valor * 1.5f;  };
 
     @Override
     public String toString() {

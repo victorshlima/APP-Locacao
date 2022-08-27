@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+         pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,36 +38,37 @@
 
 <div class="container mt-3">
 
-    <h3>Classe: Empréstimo</h3>
+    <h3>Classe: Locacao</h3>
     <table class="table table-dark table-striped">
         <thead>
         <tr>
+            <th>ID Automovel</th>
             <th>Descricao</th>
             <th>DataLocacao</th>
             <th>Data Devolucao</th>
-            <th>ID Automovel</th>
+            <th>web</th>
+            <th>locatario</th>
+            <th>Quantidade Automoveis</th>
+            <th>excluir</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>Carro - Modelo X, placata Y com risco na pintura </td>
-            <td>05/08/2022T01:01:0001</td>
-            <td>09/08/2022T01:01:0001</td>
-            <td>IDCAR0910293</td>
+    <tbody>
+        <!--/*@thymesVar id="carroLista" type="java"*/-->
+        <tr th:each="locacao: ${locacaoLista}">
+            <td th:text="${locacao.id}"></td>
+            <td th:text="${locacao.descricao}"></td>
+            <td th:text="${locacao.dataLocacao}" ></td>
+            <td th:text="${locacao.dataDevolucao}" ></td>
+            <td th:text="${locacao.web}" ></td>
+            <td th:text="${locacao.locatario.nome}" ></td>
+            <td th:text="${locacao.automoveis.size()}" ></td>
+            <td>
+                <a th:href="@{/locacao/{id}/excluir(id=${locacao.id})}">excluir</a>
+            </td>
         </tr>
-        <tr>
-            <td>Moto - Modelo X, placata Y com risco na pintura </td>
-            <td>05/08/2022T01:01:0001</td>
-            <td>09/08/2022T01:01:0001</td>
-            <td>IDCAR0910293</td>
-        </tr>
-        <tr>
-            <td>CAminhão - Modelo X, placata Y com risco na pintura </td>
-            <td>05/08/2022T01:01:0001</td>
-            <td>09/08/2022T01:01:0001</td>
-            <td>IDCAR0910293</td>
-        </tr>
-        </tbody>
+
+    </tbody>
+
     </table>
 </div>
 </body>

@@ -1,21 +1,20 @@
 package com.victation.AppLocacao.model.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-
-@Data
-@Builder
-@NoArgsConstructor
+import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInvalidoException;
+import com.victation.AppLocacao.model.domain.exeptions.ValorMotoInvalidoException;
 
 public class Moto extends Automovel {
 
     @Override
-    public float calcularValorLocacao()
-    {  return  getModelo().equals("BMW") ?  valor * 4.5f  :  valor * 1.5f;  };
+    public float calcularValorLocacao() throws ValorMotoInvalidoException {
+
+        if(valor < 5000L){
+            throw new ValorMotoInvalidoException("valor: " +valor+ " menor que 5000, valor invalida");
+        }
+
+        return  getModelo().equals("BMW") ?  valor * 4.5f  :  valor * 1.5f;
+    };
 
     @Override
     public void impressao() {
@@ -35,6 +34,9 @@ public class Moto extends Automovel {
                 ", lotacao=" + lotacao +
                 ", qtdVeiculos=" + qtdVeiculos +
                 ", qtdVeiculosDisponiveis=" + qtdVeiculosDisponiveis +
+                ":" + super.toString() +
                 '}';
     }
+
+
 }

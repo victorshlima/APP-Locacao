@@ -1,17 +1,21 @@
 package com.victation.AppLocacao.model.domain;
 
 import com.victation.AppLocacao.interfaces.IPrinter;
-import lombok.ToString;
-
+import com.victation.AppLocacao.model.domain.exeptions.AutomovelNullExecption;
+import com.victation.AppLocacao.model.domain.exeptions.LocatarioNullExecption;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Locacao implements IPrinter {
 
+    private Integer id;
     private String descricao;
     private LocalDateTime dataLocacao;
     private LocalDateTime dataDevolucao;
@@ -19,11 +23,40 @@ public class Locacao implements IPrinter {
     private Locatario locatario;
     private Set<Automovel> automoveis = new HashSet<>();
 
-    public Locacao(Locatario locatario) {
+    public Locacao(Locatario locatario, Set<Automovel> automoveis) throws LocatarioNullExecption, AutomovelNullExecption {
+
+        if(locatario == null){
+            throw new LocatarioNullExecption("Solicitante não pode ser nulo");
+        }
+
+        if(automoveis.isEmpty()){
+            throw new AutomovelNullExecption("Objeto Nulo, necessario associar um objeto automóvel na locação");
+        }
+
+        if(automoveis.isEmpty()){
+            throw new AutomovelNullExecption("Nõa pode fazer uma solicitação sem Automoveis");
+        }
+
         this.dataLocacao = LocalDateTime.now();
         this.locatario = locatario;
+        this.automoveis =automoveis;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDataLocacao() {
+        return dataLocacao;
+    }
+
+    public void setDataLocacao(LocalDateTime dataLocacao) {
+        this.dataLocacao = dataLocacao;
+    }
 
     public String getDescricao() {
         return descricao;
