@@ -1,5 +1,6 @@
 package com.victation.AppLocacao.model.domain;
 
+import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInvalidoException;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,8 +16,13 @@ public class Carro extends Automovel{
     public int portas;
 
     @Override
-    public float calcularValorLocacao()
-    {  return  getPortas() > 2 ?  valor * 3.5f  :  valor * 2.5f;  };
+    public float calcularValorLocacao() throws QuantidadePortasCarroInvalidoException {
+        if(portas >4){
+            throw new QuantidadePortasCarroInvalidoException("portas: " +portas+ " Maior que 4, Quantidade por portas invalida");
+        }
+
+        return  getPortas() > 2 ?  valor * 3.5f  :  valor * 2.5f;
+    };
 
     @Override
     public String toString() {

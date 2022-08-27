@@ -17,7 +17,7 @@ public class MotoTest implements ApplicationRunner {
         System.out.println("#moto");
 
         Moto m1 = new Moto();
-        m1.setValor(100F);
+        m1.setValor(10000F);
         m1.setChassi(123);
         m1.setCilindradas(100);
         m1.setModelo("YBR");
@@ -27,10 +27,11 @@ public class MotoTest implements ApplicationRunner {
         m1.setQtdVeiculos(1);
         m1.setQtdVeiculosDisponiveis(1);
 
-        AppLocacao.relatorio("",m1);
+        System.out.println("Calculo locacao: " + m1.calcularValorLocacao());
+        AppImpressao.relatorio("",m1);
 
         Moto m2 = new Moto();
-        m2.setValor(150F);
+        m2.setValor(150000F);
         m2.setModelo("HONDA");
         m2.setModelo("YBR");
         m2.setLotacao(2);
@@ -39,10 +40,11 @@ public class MotoTest implements ApplicationRunner {
         m2.setQtdVeiculos(1);
         m2.setQtdVeiculosDisponiveis(1);
 
-        AppLocacao.relatorio("",m2);
+        System.out.println("Calculo locacao: " + m1.calcularValorLocacao());
+        AppImpressao.relatorio("",m2);
 
         Moto m3 = new Moto();
-        m3.setValor(300F);
+        m3.setValor(300000F);
         m3.setModelo("BMW");
         m3.setLotacao(2);
         m3.setMarca("YAMAHA");
@@ -50,7 +52,8 @@ public class MotoTest implements ApplicationRunner {
         m3.setQtdVeiculos(1);
         m3.setQtdVeiculosDisponiveis(1);
 
-        AppLocacao.relatorio("",m3);
+        System.out.println("Calculo locacao: " + m1.calcularValorLocacao());
+        AppImpressao.relatorio("",m3);
 
     }
 }

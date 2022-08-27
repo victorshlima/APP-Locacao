@@ -2,12 +2,15 @@ package com.victation.AppLocacao.model.domain;
 
 
 import com.victation.AppLocacao.interfaces.IPrinter;
+import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInvalidoException;
+import com.victation.AppLocacao.model.domain.exeptions.ValorEixosInvalidoException;
+import com.victation.AppLocacao.model.domain.exeptions.ValorMotoInvalidoException;
 import lombok.Data;
 
 import java.util.Objects;
 
 @Data
-abstract class  Automovel  implements IPrinter { // autmovel por sere abstract não pode ser instaciada
+public abstract class  Automovel  implements IPrinter { // autmovel por sere abstract não pode ser instaciada
 
     public Integer id;
     public String marca;
@@ -20,7 +23,10 @@ abstract class  Automovel  implements IPrinter { // autmovel por sere abstract n
     public int qtdVeiculos;
     public int qtdVeiculosDisponiveis;
 
-    public abstract float calcularValorLocacao();
+    public abstract float calcularValorLocacao() throws QuantidadePortasCarroInvalidoException, ValorMotoInvalidoException, ValorEixosInvalidoException;
+
+
+
 
     @Override
     public String toString() {
@@ -32,7 +38,6 @@ abstract class  Automovel  implements IPrinter { // autmovel por sere abstract n
                 ", chassi=" + chassi +
                 ", placa='" + placa + '\'' +
                 ", lotacao=" + lotacao +
-                ", valor locacao" + calcularValorLocacao() +
                 '}';
     }
 

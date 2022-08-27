@@ -3,6 +3,7 @@ package com.victation.AppLocacao.model.test;
 import com.victation.AppLocacao.controller.CarroController;
 import com.victation.AppLocacao.model.domain.Carro;
 import com.victation.AppLocacao.model.domain.Moto;
+import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInvalidoException;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class CarroTeste implements ApplicationRunner  {
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args)  {
 
         System.out.println("#Carro");
 
@@ -30,7 +31,12 @@ public class CarroTeste implements ApplicationRunner  {
         c1.setValor(100F);
         c1.setPortas(2);
 
-       CarroController.incluir(c1);
+        try {
+            c1.calcularValorLocacao();
+        } catch (QuantidadePortasCarroInvalidoException e) {
+            e.printStackTrace();
+        }
+        CarroController.incluir(c1);
 
         Carro c2 = new Carro();
         c2.setValor(100F);
@@ -45,6 +51,11 @@ public class CarroTeste implements ApplicationRunner  {
         c2.setValor(100F);
         c2.setPortas(2);
 
+        try {
+            c2.calcularValorLocacao();
+        } catch (QuantidadePortasCarroInvalidoException e) {
+            e.printStackTrace();
+        }
         CarroController.incluir(c2);
 
         Carro c3 = new Carro();
@@ -60,6 +71,11 @@ public class CarroTeste implements ApplicationRunner  {
         c3.setValor(100F);
         c3.setPortas(2);
 
+        try {
+            c3.calcularValorLocacao();
+        } catch (QuantidadePortasCarroInvalidoException e) {
+            e.printStackTrace();
+        }
         CarroController.incluir(c3);
 
     }
