@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,18 +9,9 @@
 
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <div class="container-fluid">
-
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="/">Home</a>
-            </li>
-        </ul>
-        <ul th:if="${user} != ''" class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/cliente/lista">Cliente</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/automovel/lista">automovel</a>
@@ -42,25 +31,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="/locatario/lista">locatario</a>
             </li>
-
-
-        </ul>
-
-        <ul th:if="${user} == ''"  class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" href="/signup">Signup</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/login">Login</a>
-            </li>
-        </ul>
-
-        <ul th:if="${user} != ''"  class="nav nav-tabs">
-
-            <li class="nav-item">
-                <a th:text="'Logout '+${user}" class="nav-link" href="/logout">Logout</a>
-            </li>
-
         </ul>
     </div>
 </nav>
@@ -68,7 +38,7 @@
 
 <div class="container mt-3">
     <h2>AppLocacao</h2>
-    <p>Loca√ß√£o de Automoveis</p>
+    <p>LocaÁ„o de Automoveis</p>
 
     <h3>Classe: Locatario</h3>
     <table class="table table-dark table-striped">
@@ -76,7 +46,7 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descri√ß√£o</th>
+            <th>DescriÁ„o</th>
         </tr>
         </thead>
         <tbody>
@@ -108,29 +78,29 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descri√ß√£o</th>
+            <th>DescriÁ„o</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>descricao</td>
             <td>String</td>
-            <td>descri√ß√£o das condi√ß√µes do ve√≠culo, tipo e etc</td>
+            <td>descriÁ„o das condiÁıes do veÌculo, tipo e etc</td>
         </tr>
         <tr>
             <td>dataLocacao</td>
             <td>LocalDateTime</td>
-            <td>Data de Loca√ß√£o</td>
+            <td>Data de LocaÁ„o</td>
         </tr>
         <tr>
             <td>dataLocacao</td>
             <td>LocalDateTime</td>
-            <td>Data de Devolu√ß√£o</td>
+            <td>Data de DevoluÁ„o</td>
         </tr>
         <tr>
             <td>Automovel</td>
             <td>Automovel</td>
-            <td>Id do autom√≥vel locado</td>
+            <td>Id do automÛvel locado</td>
         </tr>
         </tbody>
     </table>
@@ -140,7 +110,7 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descri√ß√£o</th>
+            <th>DescriÁ„o</th>
         </tr>
         </thead>
         <tbody>
@@ -157,7 +127,7 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descri√ß√£o</th>
+            <th>DescriÁ„o</th>
         </tr>
         </thead>
         <tbody>
@@ -169,19 +139,19 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descri√ß√£o</th>
+            <th>DescriÁ„o</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>tipo</td>
             <td>String</td>
-            <td>Tipo do caminh√£o</td>
+            <td>Tipo do caminh„o</td>
         </tr>
         <tr>
             <td>capacidadeCarga</td>
             <td>int</td>
-            <td>Capacidade m√°xima de carga do caminh√£o</td>
+            <td>Capacidade m·xima de carga do caminh„o</td>
         </tr>
         </tbody>
     </table>

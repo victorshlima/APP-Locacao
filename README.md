@@ -1,5 +1,7 @@
 
-
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
 
 
 *** erro ao importar via gradle, fiz o import manual, é ncessário configurar essas Libraries manualemnte no projeto
