@@ -12,6 +12,9 @@
 
 <div class="container mt-3">
 <h2> Cadstramento de Cliente</h2>
+
+<nav th:fragment="menu/menu.jsp :: navbar"> </nav>
+
 <form action="/cliente/incluir" method="post">
     <div class="mb-3 mt-3">
         <label for="Nome" class="form-label">Nome:</label>

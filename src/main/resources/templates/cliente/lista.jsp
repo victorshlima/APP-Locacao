@@ -45,6 +45,7 @@
             <th>Nome</th>
             <th>Email</th>
             <th>Senha</th>
+            <th>excluir</th>
         </tr>
         </thead>
     <tbody>
@@ -53,6 +54,9 @@
             <td th:text="${c.nome}"></td>
             <td th:text="${c.email}"></td>
             <td th:text="${c.senha}" ></td>
+            <td>
+                <a th:href="@{/cliente/{email}/excluir(email=${c.email})}">excluir</a>
+            </td>
         </tr>
     </tbody>
 </table>

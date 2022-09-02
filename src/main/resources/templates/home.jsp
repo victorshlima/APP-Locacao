@@ -9,6 +9,9 @@
 </head>
 <body>
 
+<nav th:fragment="templates/menu/menu.jsp :: navbar"> </nav>
+
+
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <div class="container-fluid">
 
@@ -42,13 +45,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="/locatario/lista">locatario</a>
             </li>
-
-
         </ul>
 
         <ul th:if="${user} == ''"  class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="/signup">Signup</a>
+                <a class="nav-link active" href="/cliente">Signup</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="/login">Login</a>

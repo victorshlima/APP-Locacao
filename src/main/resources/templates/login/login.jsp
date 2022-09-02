@@ -7,38 +7,11 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-light navbar-light">
-    <div class="container-fluid">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/automovel/lista">automovel</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/caminhao/lista">caminhao</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/carro/lista">carro</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/automovel/lista">automovel</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/locacao/lista">locacao</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/locatario/lista">locatario</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
+<nav th:fragment="menu/menu.jsp :: navbar"> </nav>
 
 <div class="container mt-3">
     <h2>AppLocacao</h2>
-    <p>Locação de Automoveis</p>
+    <p>Locaï¿½ï¿½o de Automoveis</p>
 
     <h3>Classe: Locatario</h3>
     <table class="table table-dark table-striped">
@@ -46,7 +19,7 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descrição</th>
+            <th>Descriï¿½ï¿½o</th>
         </tr>
         </thead>
         <tbody>
@@ -78,29 +51,29 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descrição</th>
+            <th>Descriï¿½ï¿½o</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>descricao</td>
             <td>String</td>
-            <td>descrição das condições do veículo, tipo e etc</td>
+            <td>descriï¿½ï¿½o das condiï¿½ï¿½es do veï¿½culo, tipo e etc</td>
         </tr>
         <tr>
             <td>dataLocacao</td>
             <td>LocalDateTime</td>
-            <td>Data de Locação</td>
+            <td>Data de Locaï¿½ï¿½o</td>
         </tr>
         <tr>
             <td>dataLocacao</td>
             <td>LocalDateTime</td>
-            <td>Data de Devolução</td>
+            <td>Data de Devoluï¿½ï¿½o</td>
         </tr>
         <tr>
             <td>Automovel</td>
             <td>Automovel</td>
-            <td>Id do automóvel locado</td>
+            <td>Id do automï¿½vel locado</td>
         </tr>
         </tbody>
     </table>
@@ -110,7 +83,7 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descrição</th>
+            <th>Descriï¿½ï¿½o</th>
         </tr>
         </thead>
         <tbody>
@@ -127,7 +100,7 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descrição</th>
+            <th>Descriï¿½ï¿½o</th>
         </tr>
         </thead>
         <tbody>
@@ -139,19 +112,19 @@
         <tr>
             <th>Atributo</th>
             <th>Tipo</th>
-            <th>Descrição</th>
+            <th>Descriï¿½ï¿½o</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td>tipo</td>
             <td>String</td>
-            <td>Tipo do caminhão</td>
+            <td>Tipo do caminhï¿½o</td>
         </tr>
         <tr>
             <td>capacidadeCarga</td>
             <td>int</td>
-            <td>Capacidade máxima de carga do caminhão</td>
+            <td>Capacidade mï¿½xima de carga do caminhï¿½o</td>
         </tr>
         </tbody>
     </table>

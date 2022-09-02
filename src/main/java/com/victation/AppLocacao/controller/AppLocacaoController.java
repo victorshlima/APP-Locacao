@@ -1,13 +1,16 @@
 package com.victation.AppLocacao.controller;
 
+import com.victation.AppLocacao.model.domain.Cliente;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
-public class HomeController {
+public class AppLocacaoController {
 
     @GetMapping("/")
     public String getHome ( Model model){
@@ -27,7 +30,9 @@ public class HomeController {
     @PostMapping("/login")
     public String getLogin (Model model, @RequestParam String email, @RequestParam  String senha ){
 
-        if(email.equalsIgnoreCase(senha)){
+        Cliente cliente =ClienteController.validar(email,senha);
+
+        if( cliente != null){
           //  return "/";
             String nome = "Admin";
             model.addAttribute("user",nome);
@@ -40,13 +45,13 @@ public class HomeController {
     }
 
 
-    @GetMapping("/signup")
+    @GetMapping("/cliente/cadastro")
     public String getSignUp (){
-        return "signup";
+        return "/cliente/cadastro";
     }
 
     @GetMapping("/logout")
-    public String getLogout(Model model ){
+    public String getLogout(Model model){
         model.addAttribute("user", "");
         //return "home";//quando vc não usa redirect ele mantem a rota anterior, idela é sempre usar o redirect
         return "redirect:/";//quando vc não usa redirect ele mantem a rota anterior, idela é sempre usar o redirect

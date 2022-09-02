@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container mt-3">
-    <h2> Cadstramento de Cliente</h2>
+    <h2>Login</h2>
 <form action="/login" method="post">
     <div class="mb-3 mt-3">
         <label for="email" class="form-label">Email:</label>
