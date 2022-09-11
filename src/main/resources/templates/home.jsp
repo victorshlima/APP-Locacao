@@ -59,7 +59,7 @@
         <ul th:if="${user} != ''"  class="nav nav-tabs">
 
             <li class="nav-item">
-                <a th:text="'Logout '+${user}" class="nav-link" href="/logout">Logout</a>
+                <a th:text="'Logout '+${user.nome}" class="nav-link" href="/logout">Logout</a>
             </li>
 
         </ul>

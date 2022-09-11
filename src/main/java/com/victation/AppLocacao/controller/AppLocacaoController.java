@@ -1,16 +1,24 @@
 package com.victation.AppLocacao.controller;
 
 import com.victation.AppLocacao.model.domain.Cliente;
+import com.victation.AppLocacao.service.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+@SessionAttributes("user")
 @Controller
 public class AppLocacaoController {
+
+    @Autowired
+    private ClienteService clienteService;
 
     @GetMapping("/")
     public String getHome ( Model model){
@@ -29,21 +37,21 @@ public class AppLocacaoController {
 
     @PostMapping("/login")
     public String getLogin (Model model, @RequestParam String email, @RequestParam  String senha ){
-
-        Cliente cliente =ClienteController.validar(email,senha);
-
+        clienteService = new ClienteService();
+        Cliente cliente = clienteService.validar(email,senha);
+        System.out.println("tentativa login" + email+senha  );
         if( cliente != null){
+
+            System.out.println("localizado login" +cliente.getEmail());
           //  return "/";
-            String nome = "Admin";
-            model.addAttribute("user",nome);
+            model.addAttribute("user",cliente);
 
             return "home";
            // return "redirect:/";
         }
-        //return "/login";
-        return "redirect:/login";
+        return "login";
+        //return "redirect:/login";
     }
-
 
     @GetMapping("/cliente/cadastro")
     public String getSignUp (){
@@ -51,12 +59,12 @@ public class AppLocacaoController {
     }
 
     @GetMapping("/logout")
-    public String getLogout(Model model){
-        model.addAttribute("user", "");
-        //return "home";//quando vc não usa redirect ele mantem a rota anterior, idela é sempre usar o redirect
-        return "redirect:/";//quando vc não usa redirect ele mantem a rota anterior, idela é sempre usar o redirect
+    public String getLogout(HttpSession httpSession, SessionStatus sessionStatus){
+        sessionStatus.isComplete();
+        httpSession.removeAttribute("user");
+        System.out.println("Logout");
 
-
+        return "redirect:/";
     }
 
 

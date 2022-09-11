@@ -7,9 +7,11 @@
 </head>
 <body>
 
-<nav th:fragment="menu/menu.jsp :: navbar"> </nav>
+
 
 <div class="container mt-3">
+    <nav th:fragment="menu/menu.jsp :: navbar"> </nav>
+
     <h2>AppLocacao</h2>
     <p>Loca��o de Automoveis</p>
 
