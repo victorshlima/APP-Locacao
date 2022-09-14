@@ -1,0 +1,19 @@
+P;AppLocacao;Locação de Automoveis
+C;Locatario
+A;nome;String;Nome do locatario
+A;sobrenome;String;	Sobrenome do locatario
+A;cpf;String;CPF do locatario verificado
+A;email;String;	Email do locatario verificado
+C;Locacao
+A;descricao;String;descrição das condições do veículo, tipo e etc
+A;dataLocacao;LocalDateTime;Data de Locação
+A;dataLocacao;LocalDateTime;Data de Devolução
+C:Carro
+A;portas;int;Quantas portas o carro possui
+C;Caminhão
+A;tipo;String;Tipo Caminhão
+A;capacidadeCarga;int;Capacidade máxima de carga do caminhão
+C;Moto
+A;tipoRoda;String;Tipo da Roda
+A;peso;String;Peso em Kilos
+A;ano;int;Ano da moto

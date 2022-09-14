@@ -1,6 +1,9 @@
 package com.victation.AppLocacao.controller;
 
 import com.victation.AppLocacao.model.domain.Cliente;
+import com.victation.AppLocacao.model.domain.app.Projeto;
+import com.victation.AppLocacao.model.test.AppImpressao;
+import com.victation.AppLocacao.service.AppService;
 import com.victation.AppLocacao.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +23,18 @@ public class AppLocacaoController {
     @Autowired
     private ClienteService clienteService;
 
+    @Autowired
+    private AppService appService;
+
     @GetMapping("/")
-    public String getHome ( Model model){
-
+    public String getHome (Model model){
         String nome = "";
-        model.addAttribute("user",nome);
 
+        System.out.println(nome);
+        System.out.println("Projeto " +appService.obterProjeto().getNome());
+
+        model.addAttribute("user",nome);
+        model.addAttribute("projeto",appService.obterProjeto());
         return "home";
     }
 

@@ -68,11 +68,13 @@
 
 
 <div class="container mt-3">
-    <h2>AppLocacao</h2>
-    <p>Locação de Automoveis</p>
+    <h2  th:text="${projeto.nome}"></h2>
+    <p th:text="${projeto.descricao}"></p>
 
     <h3>Classe: Locatario</h3>
-    <table class="table table-dark table-striped">
+
+
+    <table class="table table-dark table-striped" th:each="c: ${projeto.classes}">
         <thead>
         <tr>
             <th>Atributo</th>
@@ -81,110 +83,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>nome</td>
-            <td>String</td>
-            <td>Nome do locatario</td>
+        <tr th:each="a: ${c.atributos}">
+            <td th:text="${a.nome}"></td>
+            <td th:text="${a.tipo}"></td>
+            <td th:text="${a.descricao}"></td>
         </tr>
-        <tr>
-            <td>sobrenome</td>
-            <td>String</td>
-            <td>Sobrenome do locatario </td>
-        </tr>
-        <tr>
-            <td>cpf</td>
-            <td>String</td>
-            <td>CPF do locatario verificado</td>
-        </tr>
-        <tr>
-            <td>email</td>
-            <td>String</td>
-            <td>Email do locatario verificado</td>
+
+
+
         </tr>
         </tbody>
     </table>
-    <h3>Classe: Locacao</h3>
-    <table class="table table-dark table-striped">
-        <thead>
-        <tr>
-            <th>Atributo</th>
-            <th>Tipo</th>
-            <th>Descrição</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>descricao</td>
-            <td>String</td>
-            <td>descrição das condições do veículo, tipo e etc</td>
-        </tr>
-        <tr>
-            <td>dataLocacao</td>
-            <td>LocalDateTime</td>
-            <td>Data de Locação</td>
-        </tr>
-        <tr>
-            <td>dataLocacao</td>
-            <td>LocalDateTime</td>
-            <td>Data de Devolução</td>
-        </tr>
-        <tr>
-            <td>Automovel</td>
-            <td>Automovel</td>
-            <td>Id do automóvel locado</td>
-        </tr>
-        </tbody>
-    </table>
-    <h3>Classe: Carro</h3>
-    <table class="table table-dark table-striped">
-        <thead>
-        <tr>
-            <th>Atributo</th>
-            <th>Tipo</th>
-            <th>Descrição</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>portas</td>
-            <td>int</td>
-            <td>Quantas portas o carro possui</td>
-        </tr>
-        </tbody>
-    </table>
-    <h3>Classe: Moto</h3>
-    <table class="table table-dark table-striped">
-        <thead>
-        <tr>
-            <th>Atributo</th>
-            <th>Tipo</th>
-            <th>Descrição</th>
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <h3>Classe: Caminhao</h3>
-    <table class="table table-dark table-striped">
-        <thead>
-        <tr>
-            <th>Atributo</th>
-            <th>Tipo</th>
-            <th>Descrição</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>tipo</td>
-            <td>String</td>
-            <td>Tipo do caminhão</td>
-        </tr>
-        <tr>
-            <td>capacidadeCarga</td>
-            <td>int</td>
-            <td>Capacidade máxima de carga do caminhão</td>
-        </tr>
-        </tbody>
+
+    </tbody>
     </table>
 </div>
 </body>
