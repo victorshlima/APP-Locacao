@@ -38,7 +38,7 @@ public class AppLocacaoController {
         return "home";
     }
 
-
+ 
     @GetMapping("/login")
     public String getTelaLogin ( ){
         return "/login";
