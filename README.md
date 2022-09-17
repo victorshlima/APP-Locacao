@@ -8,3 +8,9 @@ pageEncoding="UTF-8"%>
 APP-Locacao/src/main/resources/libs/jstl-1.2.jar
 APP-Locacao/src/main/resources/libs/standard-1.1.2.jar
 ###APP Locação
+
+
+FAZER o cadastro com BEBIDA, COMIDA, SOLICITANTE
+ ==  carro, moto, caminhão
+
+fazer com Automoveis... e caminhão

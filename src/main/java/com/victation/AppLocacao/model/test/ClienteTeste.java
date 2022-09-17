@@ -1,37 +1,28 @@
 package com.victation.AppLocacao.model.test;
 
-import com.victation.AppLocacao.controller.LocacaoController;
-import com.victation.AppLocacao.model.domain.Automovel;
 import com.victation.AppLocacao.model.domain.Cliente;
-import com.victation.AppLocacao.model.domain.Locacao;
-import com.victation.AppLocacao.model.domain.Locatario;
-import com.victation.AppLocacao.model.domain.exeptions.AutomovelNullExecption;
-import com.victation.AppLocacao.model.domain.exeptions.CPFInvalidoExeption;
-import com.victation.AppLocacao.model.domain.exeptions.LocatarioNullExecption;
 import com.victation.AppLocacao.service.ClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-
-
+@Order(2)
 @Component
 public class ClienteTeste implements ApplicationRunner {
 
+    private final ClienteService clienteService;
 
-
-    @Autowired
-    private ClienteService clienteService;
+    public ClienteTeste(ClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-
 
         String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
         String arq = "cliente.txt";
@@ -57,7 +48,6 @@ public class ClienteTeste implements ApplicationRunner {
                     } catch ( Exception e) {
                         e.printStackTrace();
                     }
-
                 }
                 System.out.println(leitura.readLine());
                 fileReader.close();
@@ -70,11 +60,9 @@ public class ClienteTeste implements ApplicationRunner {
             }
         }
         catch (Exception e){
-
         }
         finally {
             System.out.println("terminou");
         }
-
     }
 }

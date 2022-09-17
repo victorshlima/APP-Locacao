@@ -1,59 +1,72 @@
 package com.victation.AppLocacao.model.test;
 
 import com.victation.AppLocacao.model.domain.Moto;
+import com.victation.AppLocacao.service.MotoService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 @Component
-@Order(2)
+@Order(7)
 public class MotoTest implements ApplicationRunner {
+
+    MotoService motoService;
+
+    public MotoTest(MotoService motoService) {
+        this.motoService = motoService;
+    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        System.out.println("#moto");
+        String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
+        String arq = "moto.txt";
+        String fileName = dir + arq;
+        System.out.println(fileName);
 
-        Moto m1 = new Moto();
-        m1.setValor(10000F);
-        m1.setChassi(123);
-        m1.setCilindradas(100);
-        m1.setModelo("YBR");
-        m1.setLotacao(2);
-        m1.setMarca("YAMAHA");
-        m1.setPlaca("PLCA");
-        m1.setQtdVeiculos(1);
-        m1.setQtdVeiculosDisponiveis(1);
+        try {
+            try {
+                FileReader fileReader = new FileReader(fileName);
+                BufferedReader leitura = new BufferedReader(fileReader);
 
-        System.out.println("Calculo locacao: " + m1.calcularValorLocacao());
-        AppImpressao.relatorio("",m1);
+                String linha = null;
+                while ((linha = leitura.readLine()) != null) {
+                    String[] campos = linha.split(";");
 
-        Moto m2 = new Moto();
-        m2.setValor(150000F);
-        m2.setModelo("HONDA");
-        m2.setModelo("YBR");
-        m2.setLotacao(2);
-        m2.setMarca("YAMAHA");
-        m2.setPlaca("PLCA");
-        m2.setQtdVeiculos(1);
-        m2.setQtdVeiculosDisponiveis(1);
-
-        System.out.println("Calculo locacao: " + m1.calcularValorLocacao());
-        AppImpressao.relatorio("",m2);
-
-        Moto m3 = new Moto();
-        m3.setValor(300000F);
-        m3.setModelo("BMW");
-        m3.setLotacao(2);
-        m3.setMarca("YAMAHA");
-        m3.setPlaca("PLCA");
-        m3.setQtdVeiculos(1);
-        m3.setQtdVeiculosDisponiveis(1);
-
-        System.out.println("Calculo locacao: " + m1.calcularValorLocacao());
-        AppImpressao.relatorio("",m3);
+                    try {
+                        Moto moto = new Moto(
+                                Integer.valueOf(campos[0]),
+                                Integer.valueOf(campos[1]),
+                                Integer.valueOf(campos[2]),
+                                campos[3]
+                        );
+                        motoService.incluir(moto);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println(leitura.readLine());
+                fileReader.close();
+                leitura.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("[ERRO] O arquivo não existe!!!");
+                e.printStackTrace();
+            } catch (IOException e) {
+                System.out.println("[ERRO] erro ao fechar o reader");
+            }
+        } catch (Exception e) {
+        } finally {
+            System.out.println("terminou");
+        }
 
     }
+
+
 }

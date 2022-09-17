@@ -8,9 +8,27 @@ import java.time.LocalDateTime;
 
 public class Moto extends Automovel {
 
+    private Integer id;
     private int peso;
-    private LocalDateTime ano;
+    private int ano;
     private String  tipoRoda;
+
+    public Moto(Integer id, int peso, int ano, String tipoRoda) {
+        this.id = id;
+        this.peso = peso;
+        this.ano = ano;
+        this.tipoRoda = tipoRoda;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public int getPeso() {
         return peso;
@@ -20,11 +38,11 @@ public class Moto extends Automovel {
         this.peso = peso;
     }
 
-    public LocalDateTime getAno() {
+    public int getAno() {
         return ano;
     }
 
-    public void setAno(LocalDateTime ano) {
+    public void setAno(int ano) {
         this.ano = ano;
     }
 

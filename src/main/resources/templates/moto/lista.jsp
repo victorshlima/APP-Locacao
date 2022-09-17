@@ -36,43 +36,34 @@
 
 <div class="container mt-3">
 
-    <h3>Classe: Carro</h3>
+    <h3>Classe: Moto</h3>
+
+    <h4>
+        <td>
+            <a th:href="@{/moto}">novo</a>
+        </td>
+    </h4>
+
+
     <table class="table table-dark table-striped">
         <thead>
         <tr>
-            <th>marca</th>
-            <th>modelo</th>
-            <th>cilindradas</th>
-            <th>chassi</th>
-            <th>placa</th>
-            <th>lotacao</th>
+            <th>peso</th>
+            <th>ano</th>
+            <th>tipoRoda</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>HONDA</td>
-            <td>TRAIL</td>
-            <td>125</td>
-            <td>CHASSI000110001</td>
-            <td>PLACA-Y294</td>
-            <td>5</td>
+        <tr th:each="m: ${listagem}">
+            <td th:text="${m.id}"></td>
+            <td th:text="${m.peso}"></td>
+            <td th:text="${m.ano}"></td>
+            <td th:text="${m.tipoRoda}"></td>
+            <td>
+                <a th:href="@{/moto/{id}/excluir(id=${m.id})}">excluir</a>
+            </td>
         </tr>
-        <tr>
-            <td>KTM</td>
-            <td>DUKE</td>
-            <td>200</td>
-            <td>CHASSI00011287978</td>
-            <td>PLACA-F6D4</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>YAMAHA</td>
-            <td>V STAR</td>
-            <td>250</td>
-            <td>CHASSI0001127897891</td>
-            <td>PLACA-M1W8</td>
-            <td>5</td>
-        </tr>
+        </tbody>
 
         </tbody>
     </table>

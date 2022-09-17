@@ -1,8 +1,6 @@
 package com.victation.AppLocacao.controller;
 
 import com.victation.AppLocacao.model.domain.Cliente;
-import com.victation.AppLocacao.model.domain.app.Projeto;
-import com.victation.AppLocacao.model.test.AppImpressao;
 import com.victation.AppLocacao.service.AppService;
 import com.victation.AppLocacao.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +36,6 @@ public class AppLocacaoController {
         return "home";
     }
 
- 
     @GetMapping("/login")
     public String getTelaLogin ( ){
         return "/login";
@@ -46,17 +43,15 @@ public class AppLocacaoController {
 
     @PostMapping("/login")
     public String getLogin (Model model, @RequestParam String email, @RequestParam  String senha ){
-        clienteService = new ClienteService();
+       // clienteService = new ClienteService(); isso ta matando a inicialização da instancia com os dados do CSV!!!
         Cliente cliente = clienteService.validar(email,senha);
         System.out.println("tentativa login" + email+senha  );
         if( cliente != null){
-
             System.out.println("localizado login" +cliente.getEmail());
-          //  return "/";
             model.addAttribute("user",cliente);
-
-            return "home";
-           // return "redirect:/";
+            //  return "/";
+            //return "home";
+            return "redirect:/";
         }
         return "login";
         //return "redirect:/login";
@@ -75,6 +70,5 @@ public class AppLocacaoController {
 
         return "redirect:/";
     }
-
 
 }

@@ -1,0 +1,3 @@
+1;BMW;magnata;2022;2
+2;Ferrari;xpto;2022;2
+3;Ferrari;cosmos;2022;4

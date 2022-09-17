@@ -16,7 +16,8 @@ public class ClienteService {
 
     public  Cliente validar(String email, String senha){
 
-        Cliente cliente = mapaCliente.get(email);
+
+        Cliente cliente = this.mapaCliente.get(email);
 
         if (cliente != null && cliente.getSenha().equals(senha)){
             return cliente;
@@ -34,7 +35,7 @@ public class ClienteService {
 
     public void incluir(Cliente cliente){
         mapaCliente.put(cliente.getEmail(), cliente);
-        AppImpressao.relatorio("Cliente " + cliente.getNome() + " incuido com sucesso", cliente);
+        AppImpressao.relatorio("Solicitante " + cliente.getNome() + " incluído com sucesso", cliente);
     }
 
 

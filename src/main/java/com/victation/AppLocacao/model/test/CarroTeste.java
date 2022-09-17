@@ -1,84 +1,68 @@
 package com.victation.AppLocacao.model.test;
 
-import com.victation.AppLocacao.controller.CarroController;
+
 import com.victation.AppLocacao.model.domain.Carro;
-import com.victation.AppLocacao.model.domain.Moto;
-import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInvalidoException;
+import com.victation.AppLocacao.service.CarroService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 @Component
-@Order(3)
+@Order(4)
 public class CarroTeste implements ApplicationRunner  {
 
+    private final CarroService carroService;
+
+    public CarroTeste(CarroService carroService) {
+        this.carroService = carroService;
+    }
     @Override
-    public void run(ApplicationArguments args)  {
+    public void run(ApplicationArguments args) {
 
-        System.out.println("#Carro");
-
-        Carro c1 = new Carro();
-        c1.setValor(100F);
-        c1.setChassi(123234344);
-        c1.setCilindradas(100);
-        c1.setModelo("YBR");
-        c1.setLotacao(2);
-        c1.setMarca("YAMAHA");
-        c1.setPlaca("PLCA123");
-        c1.setQtdVeiculos(1);
-        c1.setQtdVeiculosDisponiveis(1);
-        c1.setValor(100F);
-        c1.setPortas(2);
+        String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
+        String arq = "carro.txt";
+        String fileName = dir + arq;
+        System.out.println(fileName);
 
         try {
-            c1.calcularValorLocacao();
-        } catch (QuantidadePortasCarroInvalidoException e) {
-            e.printStackTrace();
+            try {
+                FileReader fileReader = new FileReader(fileName);
+                BufferedReader leitura = new BufferedReader(fileReader);
+
+                String linha = null;
+                while ((linha = leitura.readLine()) != null) {
+                    String[] campos = linha.split(";");
+
+                    try {
+                        Carro carro = new Carro(
+                                Integer.valueOf(campos[0]),
+                                campos[1],
+                                campos[2],
+                                Integer.valueOf(campos[3])
+                        );
+                        carroService.incluir(carro);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println(leitura.readLine());
+                fileReader.close();
+                leitura.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("[ERRO] O arquivo não existe!!!");
+                e.printStackTrace();
+            } catch (IOException e) {
+                System.out.println("[ERRO] erro ao fechar o reader");
+            }
+        } catch (Exception e) {
+        } finally {
+            System.out.println("terminou");
         }
-        CarroController.incluir(c1);
-
-        Carro c2 = new Carro();
-        c2.setValor(100F);
-        c2.setChassi(12423844);
-        c2.setCilindradas(100);
-        c2.setModelo("YBR");
-        c2.setLotacao(2);
-        c2.setMarca("YAMAHA");
-        c2.setPlaca("PLCA321");
-        c2.setQtdVeiculos(1);
-        c2.setQtdVeiculosDisponiveis(1);
-        c2.setValor(100F);
-        c2.setPortas(2);
-
-        try {
-            c2.calcularValorLocacao();
-        } catch (QuantidadePortasCarroInvalidoException e) {
-            e.printStackTrace();
-        }
-        CarroController.incluir(c2);
-
-        Carro c3 = new Carro();
-        c3.setValor(100F);
-        c3.setChassi(123234333);
-        c3.setCilindradas(100);
-        c3.setModelo("YBR");
-        c3.setLotacao(2);
-        c3.setMarca("YAMAHA");
-        c3.setPlaca("PLCA1233");
-        c3.setQtdVeiculos(1);
-        c3.setQtdVeiculosDisponiveis(1);
-        c3.setValor(100F);
-        c3.setPortas(2);
-
-        try {
-            c3.calcularValorLocacao();
-        } catch (QuantidadePortasCarroInvalidoException e) {
-            e.printStackTrace();
-        }
-        CarroController.incluir(c3);
 
     }
-
-
 }

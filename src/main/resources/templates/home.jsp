@@ -88,9 +88,6 @@
             <td th:text="${a.tipo}"></td>
             <td th:text="${a.descricao}"></td>
         </tr>
-
-
-
         </tr>
         </tbody>
     </table>

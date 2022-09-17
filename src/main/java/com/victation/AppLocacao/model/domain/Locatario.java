@@ -8,12 +8,13 @@ import lombok.*;
 @NoArgsConstructor
 public class Locatario implements IPrinter {
 
+    public Integer id;
     public String nome;
     public String sobrenome;
     public String cpf;
     public String email;
 
-    public Locatario(String cpf, String email, String nome, String sobrenome )
+    public Locatario(Integer id, String cpf, String email, String nome, String sobrenome )
      throws CPFInvalidoExeption {
 
 
@@ -24,11 +25,19 @@ public class Locatario implements IPrinter {
         if ( cpf.isEmpty()){
             throw new CPFInvalidoExeption("Não é possivel aceitar cpf nulo");
         }
-
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.email = email;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override

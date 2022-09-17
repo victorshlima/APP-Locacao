@@ -13,7 +13,25 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Carro extends Automovel{
 
+    public Integer id;
     public int portas;
+
+
+
+    public Carro(Integer id, String marca, String modelo, int portas) {
+        this.id = id;
+        super.marca =marca;
+        super.modelo = modelo;
+        this.portas = portas;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     @Override
     public float calcularValorLocacao() throws QuantidadePortasCarroInvalidoException {

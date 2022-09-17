@@ -9,6 +9,7 @@ import com.victation.AppLocacao.service.AppService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -19,12 +20,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+@Order(6)
 @Component
 public class AppTeste implements ApplicationRunner {
 
-    @Autowired
-    private AppService appService;
+    private final AppService appService;
+
+    public AppTeste(AppService appService) {
+        this.appService = appService;
+    }
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 

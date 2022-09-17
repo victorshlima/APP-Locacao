@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-@Order(3)
+@Order(5)
 public class CaminhaoTeste implements ApplicationRunner  {
 
     @Override

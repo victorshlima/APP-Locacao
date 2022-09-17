@@ -1,5 +1,6 @@
 package com.victation.AppLocacao.model.test;
 
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.victation.AppLocacao.controller.LocacaoController;
 import com.victation.AppLocacao.model.domain.*;
 import com.victation.AppLocacao.model.domain.exeptions.AutomovelNullExecption;
@@ -14,21 +15,18 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-
+@Order(3)
 @Component
-@Order(1)
 public class LocacaoTeste implements ApplicationRunner {
-
+    private static Integer id =1;
     @Override
     public void run(ApplicationArguments args)   {
 
-//---------------------------------------------------------------
-
-
-        Moto m1 = new Moto();
+        Moto m1 = new Moto(100, 2022, 2022, "xb1");
         m1.setValor(100F);
         m1.setChassi(1234234);
         m1.setCilindradas(100);
@@ -91,7 +89,7 @@ public class LocacaoTeste implements ApplicationRunner {
                         automoveis1.add(ca1);
                         automoveis1.add(ca1);
 
-                        var locatario1 = new Locatario(
+                        var locatario1 = new Locatario(id++,
                                 campos[2],
                                 campos[3],
                                 campos[4],

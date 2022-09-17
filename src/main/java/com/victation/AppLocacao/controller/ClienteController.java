@@ -3,7 +3,6 @@ package com.victation.AppLocacao.controller;
 import com.victation.AppLocacao.model.domain.Cliente;
 import com.victation.AppLocacao.model.test.AppImpressao;
 import com.victation.AppLocacao.service.ClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ClienteController {
 
-    @Autowired
-    private ClienteService clienteService;
+    private final ClienteService clienteService;
+
+    public ClienteController(ClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
 
     @GetMapping("/cliente/lista")
     public String telaLista (HttpServletRequest request, Model model){

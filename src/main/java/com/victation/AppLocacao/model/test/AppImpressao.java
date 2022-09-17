@@ -17,9 +17,6 @@ public class AppImpressao {
 
 	public static void main (String[] args)   {
 
-
-
-
 		String systemDir = System.getProperty("user.dir");
 		System.out.println(systemDir);
 		String dir = systemDir+"//dev//";
@@ -45,11 +42,6 @@ public class AppImpressao {
 			} catch (IOException e){
 				System.out.println("[ERRO] erro ao fechar o reader");
 			}
-
-
-
-
-
 
 	}
 

@@ -38,32 +38,29 @@
 
 <div class="container mt-3">
 
+    <h4>
+        <td>
+            <a th:href="@{/carro}">novo</a>
+        </td>
+    </h4>
+
     <h3>Classe: Carro</h3>
     <table class="table table-dark table-striped">
         <thead>
         <tr>
-            <th>ID</th>
+            <th>id</th>
             <th>marca</th>
             <th>modelo</th>
             <th>Portas</th>
-            <th>cilindradas</th>
-            <th>chassi</th>
-            <th>placa</th>
-            <th>lotacao</th>
             <th></th>
         </tr>
         </thead>
     <tbody>
-        <!--/*@thymesVar id="carroLista" type="java"*/-->
-        <tr th:each="carro: ${carroLista}">
+        <tr th:each="carro: ${listagem}">
             <td th:text="${carro.id}"></td>
             <td th:text="${carro.marca}"></td>
             <td th:text="${carro.modelo}" ></td>
             <td th:text="${carro.portas}" ></td>
-            <td th:text="${carro.cilindradas}" ></td>
-            <td th:text="${carro.chassi}" ></td>
-            <td th:text="${carro.placa}" ></td>
-            <td th:text="${carro.lotacao}" ></td>
             <td>
                 <a th:href="@{/carro/{id}/excluir(id=${carro.id})}">excluir</a>
             </td>

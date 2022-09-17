@@ -36,38 +36,38 @@
 
 <div class="container mt-3">
 
-    <h3>Classe: Empréstimo</h3>
+    <h3>Classe: Emprï¿½stimo</h3>
+
+
+    <h4>
+        <td>
+            <a th:href="@{/locatario}">novo</a>
+        </td>
+    </h4>
+
     <table class="table table-dark table-striped">
         <thead>
         <tr>
+            <th>id</th>
             <th>nome</th>
             <th>sobrenome</th>
             <th>cpf</th>
             <th>email</th>
+            <th>acao</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Pedro</td>
-            <td>Romario</td>
-            <td>12346798901</td>
-            <td>joao_da_net@gmail.com</td>
-        </tr>
-        <tr>
-            <td>Maria</td>
-            <td>Luiza</td>
-            <td>12346798902</td>
-            <td>maria_da_net@gmail.com</td>
-        </tr>
 
-        <tr>
-            <td>Cleitinho</td>
-            <td>Pereira</td>
-            <td>12346798903</td>
-            <td>cleitinhu_da_net@gmail.com</td>
+        <tr th:each="l: ${listagem}">
+            <td th:text="${l.id}"></td>
+            <td th:text="${l.nome}"></td>
+            <td th:text="${l.sobrenome}"></td>
+            <td th:text="${l.cpf}"></td>
+            <td th:text="${l.email}"></td>
+            <td>
+                <a th:href="@{/locatario/{id}/excluir(id=${l.id})}">excluir</a>
+            </td>
         </tr>
-
-
         </tbody>
     </table>
 </div>
