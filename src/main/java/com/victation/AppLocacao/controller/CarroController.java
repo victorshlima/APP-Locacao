@@ -1,8 +1,6 @@
 package com.victation.AppLocacao.controller;
 
 import com.victation.AppLocacao.model.domain.Carro;
-import com.victation.AppLocacao.model.domain.Moto;
-import com.victation.AppLocacao.model.test.AppImpressao;
 import com.victation.AppLocacao.service.CarroService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

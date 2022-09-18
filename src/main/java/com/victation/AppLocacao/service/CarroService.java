@@ -1,10 +1,8 @@
 package com.victation.AppLocacao.service;
 
 import com.victation.AppLocacao.model.domain.Carro;
-import com.victation.AppLocacao.model.domain.Moto;
 import com.victation.AppLocacao.model.test.AppImpressao;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;

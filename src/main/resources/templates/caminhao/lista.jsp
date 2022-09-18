@@ -36,58 +36,31 @@
 
 <div class="container mt-3">
 
-    <h3>Classe: Carro</h3>
+    <h4>
+        <td>
+            <a th:href="@{/caminhao}">novo</a>
+        </td>
+    </h4>
+
+    <h3>Classe: Caminh√£o</h3>
     <table class="table table-dark table-striped">
         <thead>
         <tr>
-            <th>marca</th>
-            <th>modelo</th>
-            <th>Portas</th>
-            <th>Tipo</th>
+            <th>id</th>
             <th>eixos</th>
             <th>capacidadeCarga</th>
-            <th>cilindradas</th>
-            <th>chassi</th>
-            <th>placa</th>
-            <th>lotacao</th>
+            <th>acao</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>GOL</td>
-            <td>Bola</td>
-            <td>2</td>
-            <td>Cavalo Mec‚nico Simples</td>
-            <td>1</td>
-            <td>15</td>
-            <td>1.2</td>
-            <td>CHASSI00011231321</td>
-            <td>PLACA-Y293</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>Ford</td>
-            <td>Bola</td>
-            <td>2</td>
-            <td>Cavalo Mec‚nico Trucado</td>
-            <td>1</td>
-            <td>20</td>
-            <td>1.2</td>
-            <td>CHASSI00011287978</td>
-            <td>PLACA-F0D4</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>BMW</td>
-            <td>Bola</td>
-            <td>4</td>
-            <td>Conjunto Carreta</td>
-            <td>3</td>
-            <td>30</td>
-            <td>1.2</td>
-            <td>CHASSI0001127897891</td>
-            <td>PLACA-M1W1</td>
-            <td>4</td>
+
+        <tr th:each="cm: ${listagem}">
+            <td th:text="${cm.id}"></td>
+            <td th:text="${cm.eixos}"></td>
+            <td th:text="${cm.capacidadeCarga}" ></td>
+            <td>
+                <a th:href="@{/caminhao/{id}/excluir(id=${cm.id})}">excluir</a>
+            </td>
         </tr>
 
         </tbody>

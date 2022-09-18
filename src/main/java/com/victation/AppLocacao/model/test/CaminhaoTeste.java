@@ -1,54 +1,70 @@
 package com.victation.AppLocacao.model.test;
 
 import com.victation.AppLocacao.model.domain.Caminhao;
-import com.victation.AppLocacao.model.domain.exeptions.ValorEixosInvalidoException;
+import com.victation.AppLocacao.service.CaminhaoService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 
 @Component
 @Order(5)
 public class CaminhaoTeste implements ApplicationRunner  {
 
+    private final CaminhaoService caminhaoService;
+
+    public CaminhaoTeste(CaminhaoService caminhaoService) {
+        this.caminhaoService = caminhaoService;
+    }
+
     @Override
     public void run(ApplicationArguments args)   {
 
-        System.out.println("#Caminhao");
-
-        Caminhao c1 = new Caminhao();
-        c1.setValor(100F);
-        c1.setEixos(1);
-
-        try {
-            c1.calcularValorLocacao();
-        } catch (ValorEixosInvalidoException e) {
-            System.out.println( "[ERRO - CAMINHÂO ]" + e.getMessage());
-        }
-        AppImpressao.relatorio("", c1);
-
-        Caminhao c2 = new Caminhao();
-        c2.setValor(150F);
-        c2.setEixos(1);
+        String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
+        String arq = "caminhao.txt";
+        String fileName = dir + arq;
+        System.out.println(fileName);
 
         try {
-            c2.calcularValorLocacao();
-        } catch (ValorEixosInvalidoException e) {
-            System.out.println( "[ERRO - CAMINHÂO ]" + e.getMessage());
-        }
-        AppImpressao.relatorio("", c2);
+            try {
+                FileReader fileReader = new FileReader(fileName);
+                BufferedReader leitura = new BufferedReader(fileReader);
 
-        Caminhao c3 = new Caminhao();
-        c3.setValor(300F);
-        c3.setEixos(1);
+                String linha = null;
+                while ((linha = leitura.readLine()) != null) {
+                    String[] campos = linha.split(";");
 
-        try {
-            c3.calcularValorLocacao();
-        } catch (ValorEixosInvalidoException e) {
-            System.out.println( "[ERRO - CAMINHÂO ]" + e.getMessage());
+                    try {
+                        Caminhao caminhao = new Caminhao(
+                                Integer.parseInt(campos[0]),
+                                campos[1],
+                                Integer.parseInt(campos[2]),
+                                Integer.parseInt(campos[3])
+                        );
+                        caminhaoService.incluir(caminhao);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                System.out.println(leitura.readLine());
+                fileReader.close();
+                leitura.close();
+            } catch (FileNotFoundException e) {
+                System.out.println("[ERRO] O arquivo não existe!!!");
+                e.printStackTrace();
+            } catch (IOException e) {
+                System.out.println("[ERRO] erro ao fechar o reader");
+            }
+        } catch (Exception e) {
+        } finally {
+            System.out.println("terminou");
         }
-        AppImpressao.relatorio("", c3);
 
     }
 

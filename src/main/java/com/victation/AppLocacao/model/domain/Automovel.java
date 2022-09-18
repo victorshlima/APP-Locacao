@@ -27,7 +27,6 @@ public abstract class  Automovel  implements IPrinter { // autmovel por sere abs
 
 
 
-
     @Override
     public String toString() {
         return "\nAutomovel{" +

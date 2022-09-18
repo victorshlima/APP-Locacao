@@ -38,6 +38,13 @@
 
 <div class="container mt-3">
 
+
+    <h4>
+        <td>
+            <a th:href="@{/cliente}">novo</a>
+        </td>
+    </h4>
+
     <h3>Cliente: Cliente</h3>
     <table class="table table-dark table-striped">
         <thead>

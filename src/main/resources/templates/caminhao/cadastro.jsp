@@ -11,11 +11,11 @@
 <body>
 
 <div class="container mt-3">
-<h2> Cadstramento de Carro</h2>
+<h2> Cadstramento de Caminhao</h2>
 
 <nav th:fragment="menu/menu.jsp :: navbar"> </nav>
 
-<form action="/carro/incluir" method="post">
+<form action="/caminhao/incluir" method="post">
     
     <div class="mb-3 mt-3">
         <label for="id" class="form-label">id:</label>
@@ -56,6 +56,7 @@
         <label for="lotacao" class="form-label">lotacao:</label>
         <input type="text" class="form-control" id="lotacao" placeholder="Entre com seu lotacao" name="lotacao">
     </div>
+
 
     <button type="submit" class="btn btn-primary">Cadastrar</button>
 

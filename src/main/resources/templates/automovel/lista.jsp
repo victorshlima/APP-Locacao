@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,35 +36,31 @@
 
 <div class="container mt-3">
 
-    <h3>Classe: Empréstimo</h3>
+
+    <h3>Classe: Automovel</h3>
     <table class="table table-dark table-striped">
         <thead>
         <tr>
-            <th>Descricao</th>
-            <th>DataLocacao</th>
-            <th>Data Devolucao</th>
-            <th>ID Automovel</th>
+            <th>marca</th>
+            <th>modelo</th>
+            <th>Portas</th>
+            <th>cilindradas</th>
+            <th>chassi</th>
+            <th>placa</th>
+            <th>lotacao</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>Carro - Modelo X, placata Y com risco na pintura </td>
-            <td>05/08/2022T01:01:0001</td>
-            <td>09/08/2022T01:01:0001</td>
-            <td>IDCAR0910293</td>
+            <td>GOL</td>
+            <td>Bola</td>
+            <td>2</td>
+            <td>1.2</td>
+            <td>CHASSI00011231321</td>
+            <td>PLACA-Y293</td>
+            <td>5</td>
         </tr>
-        <tr>
-            <td>Moto - Modelo X, placata Y com risco na pintura </td>
-            <td>05/08/2022T01:01:0001</td>
-            <td>09/08/2022T01:01:0001</td>
-            <td>IDCAR0910293</td>
-        </tr>
-        <tr>
-            <td>CAminhão - Modelo X, placata Y com risco na pintura </td>
-            <td>05/08/2022T01:01:0001</td>
-            <td>09/08/2022T01:01:0001</td>
-            <td>IDCAR0910293</td>
-        </tr>
+
         </tbody>
     </table>
 </div>

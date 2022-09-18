@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 public class Caminhao extends Automovel{
 
      //http://www.guiadotrc.com.br/noticias/noticiaID.asp?id=36008
+
+    public Integer id;
     public String tipo; //enum - Toco - Truck - VUC ...
     public int eixos;
     public int capacidadeCarga;
-
-
 
     @Override
     public float calcularValorLocacao() throws ValorEixosInvalidoException {
