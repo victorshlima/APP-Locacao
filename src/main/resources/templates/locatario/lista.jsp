@@ -36,12 +36,12 @@
 
 <div class="container mt-3">
 
-    <h3>Classe: Empr�stimo</h3>
+    <h3>Classe: Locatario</h3>
 
 
     <h4>
         <td>
-            <a th:href="@{/locatario}">novo</a>
+            <a th:href="@{/locacao}">novo</a>
         </td>
     </h4>
 

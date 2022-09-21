@@ -35,7 +35,7 @@
         <label for="email" class="form-label">Email:</label>
         <input type="email" class="form-control" id="email" placeholder="Entre com seu e-mail" name="email">
     </div>
-    <button type="submit" class="btn btn-primary">Castrar</button>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
 </form>
 </div>
 

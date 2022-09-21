@@ -27,7 +27,7 @@ public class MotoTest implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
-        String arq = "moto.txt";
+        String arq = "automoveis.txt";
         String fileName = dir + arq;
         System.out.println(fileName);
 
@@ -40,17 +40,22 @@ public class MotoTest implements ApplicationRunner {
                 while ((linha = leitura.readLine()) != null) {
                     String[] campos = linha.split(";");
 
-                    try {
-                        Moto moto = new Moto(
-                                Integer.valueOf(campos[0]),
-                                Integer.valueOf(campos[1]),
-                                Integer.valueOf(campos[2]),
-                                campos[3]
-                        );
-                        motoService.incluir(moto);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    if ("M".equals(campos[0])){
+
+                        try {
+                            Moto moto = new Moto(
+                                    Integer.valueOf(campos[1]),
+                                    Integer.valueOf(campos[2]),
+                                    Integer.valueOf(campos[3]),
+                                    campos[4]
+                            );
+                            motoService.incluir(moto);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
                     }
+
                 }
                 System.out.println(leitura.readLine());
                 fileReader.close();

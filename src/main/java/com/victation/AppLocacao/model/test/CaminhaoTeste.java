@@ -27,7 +27,7 @@ public class CaminhaoTeste implements ApplicationRunner  {
     public void run(ApplicationArguments args)   {
 
         String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
-        String arq = "caminhao.txt";
+        String arq = "automoveis.txt";
         String fileName = dir + arq;
         System.out.println(fileName);
 
@@ -39,17 +39,18 @@ public class CaminhaoTeste implements ApplicationRunner  {
                 String linha = null;
                 while ((linha = leitura.readLine()) != null) {
                     String[] campos = linha.split(";");
-
-                    try {
-                        Caminhao caminhao = new Caminhao(
-                                Integer.parseInt(campos[0]),
-                                campos[1],
-                                Integer.parseInt(campos[2]),
-                                Integer.parseInt(campos[3])
-                        );
-                        caminhaoService.incluir(caminhao);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    if ("O".equals(campos[0])) {
+                        try {
+                            Caminhao caminhao = new Caminhao(
+                                    Integer.parseInt(campos[1]),
+                                    campos[2],
+                                    Integer.parseInt(campos[3]),
+                                    Integer.parseInt(campos[4])
+                            );
+                            caminhaoService.incluir(caminhao);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
                 System.out.println(leitura.readLine());

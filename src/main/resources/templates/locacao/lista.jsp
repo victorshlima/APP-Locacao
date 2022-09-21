@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +38,13 @@
 
 <div class="container mt-3">
 
+    <h4>
+        <td>
+            <a th:href="@{/locacao}">novo</a>
+        </td>
+    </h4>
+
+
     <h3>Classe: Locacao</h3>
     <table class="table table-dark table-striped">
         <thead>
@@ -52,22 +59,22 @@
             <th>excluir</th>
         </tr>
         </thead>
-    <tbody>
+        <tbody>
         <!--/*@thymesVar id="carroLista" type="java"*/-->
         <tr th:each="locacao: ${locacaoLista}">
             <td th:text="${locacao.id}"></td>
             <td th:text="${locacao.descricao}"></td>
-            <td th:text="${locacao.dataLocacao}" ></td>
-            <td th:text="${locacao.dataDevolucao}" ></td>
-            <td th:text="${locacao.web}" ></td>
-            <td th:text="${locacao.locatario.nome}" ></td>
-            <td th:text="${locacao.automoveis.size()}" ></td>
+            <td th:text="${locacao.dataLocacao}"></td>
+            <td th:text="${locacao.dataDevolucao}"></td>
+            <td th:text="${locacao.web}"></td>
+            <td th:text="${locacao.locatario.nome}"></td>
+            <td th:text="${locacao.automoveis.size()}"></td>
             <td>
                 <a th:href="@{/locacao/{id}/excluir(id=${locacao.id})}">excluir</a>
             </td>
         </tr>
 
-    </tbody>
+        </tbody>
 
     </table>
 </div>
