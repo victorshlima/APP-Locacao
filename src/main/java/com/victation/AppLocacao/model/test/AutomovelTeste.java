@@ -1,10 +1,9 @@
 package com.victation.AppLocacao.model.test;
 
-import com.victation.AppLocacao.controller.LocacaoController;
+
 import com.victation.AppLocacao.model.domain.*;
-import com.victation.AppLocacao.model.domain.exeptions.AutomovelNullExecption;
-import com.victation.AppLocacao.model.domain.exeptions.CPFInvalidoExeption;
-import com.victation.AppLocacao.model.domain.exeptions.LocatarioNullExecption;
+import com.victation.AppLocacao.service.AutomovelService;
+import com.victation.AppLocacao.service.CarroService;
 import com.victation.AppLocacao.service.LocacaoService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -15,24 +14,27 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-@Order(3)
 @Component
-public class LocacaoTeste implements ApplicationRunner {
+@Order(7)
+public class AutomovelTeste implements ApplicationRunner  {
 
-    private final LocacaoService locacaoService;
+    private final AutomovelService automovelService;
 
-    public LocacaoTeste(LocacaoService locacaoService) {
-        this.locacaoService = locacaoService;
+    public AutomovelTeste(AutomovelService automovelService) {
+        this.automovelService = automovelService;
     }
 
     private static Integer id =1;
+
     @Override
     public void run(ApplicationArguments args)   {
 
-       String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
-        String arq = "locacoes.txt";
+        String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
+        String arq = "automoveis.txt";
         String fileName =dir + arq;
         System.out.println(fileName);
 
@@ -51,27 +53,8 @@ public class LocacaoTeste implements ApplicationRunner {
                 while ((linha = leitura.readLine()) != null){
                     String[] campos = linha.split(";");
                     switch (campos[0].toUpperCase()) {
-                        case "L":
-                            try {
-                                automoveis = new HashSet<>();
-
-                                var locatario = new Locatario(id++,
-                                        campos[3],
-                                        campos[4],
-                                        campos[5],
-                                        campos[6]
-                                );
-
-                                Locacao locacao = new Locacao(locatario, automoveis);
-                                locacao.setDescricao(campos[1]);
-                                locacao.setWeb(Boolean.valueOf(campos[2]));
-                            locacoes.add(locacao);
-                            } catch ( AutomovelNullExecption | CPFInvalidoExeption| LocatarioNullExecption e) {
-                                e.printStackTrace();
-                            }
-                            break;
                         case "M":
-                        try {
+                            try {
                                 Moto moto = new Moto(
                                         Integer.valueOf(campos[1]),
                                         Integer.valueOf(campos[2]),
@@ -79,7 +62,7 @@ public class LocacaoTeste implements ApplicationRunner {
                                         campos[4]
                                 );
 
-                              automoveis.add(moto);
+                                automovelService.incluir(moto);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -93,7 +76,7 @@ public class LocacaoTeste implements ApplicationRunner {
                                         campos[3],
                                         Integer.valueOf(campos[4])
                                 );
-                                automoveis.add(carro);
+                                automovelService.incluir(carro);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -107,18 +90,13 @@ public class LocacaoTeste implements ApplicationRunner {
                                         Integer.parseInt(campos[3]),
                                         Integer.parseInt(campos[4])
                                 );
-                                automoveis.add(caminhao);
+                                automovelService.incluir(caminhao);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                             break;
                         default:
-                        break;
-                    }
-                    for (Locacao l: locacoes){
-                        System.out.println(">>>>> INCLUIR ");
-                        System.out.println(">>>>>  "  + l.getId());
-                        locacaoService.incluir(l);
+                            break;
                     }
                 }
 
@@ -139,10 +117,10 @@ public class LocacaoTeste implements ApplicationRunner {
             System.out.println("terminou");
         }
 
+
         System.out.println("#################################################################");
         System.out.println("#################################################################");
 
 
     }
-
 }

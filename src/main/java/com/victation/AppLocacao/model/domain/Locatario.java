@@ -4,19 +4,29 @@ import com.victation.AppLocacao.interfaces.IPrinter;
 import com.victation.AppLocacao.model.domain.exeptions.CPFInvalidoExeption;
 import lombok.*;
 
-@Data
-@NoArgsConstructor
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "locatario")
 public class Locatario implements IPrinter {
 
-    public Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+
     public String nome;
     public String sobrenome;
     public String cpf;
     public String email;
 
-    public Locatario(Integer id, String cpf, String email, String nome, String sobrenome )
-     throws CPFInvalidoExeption {
+    public Locatario() {
+    }
 
+
+    public Locatario(Integer id, String nome, String sobrenome, String cpf, String email )
+     throws CPFInvalidoExeption {
 
        if ( cpf == null){
             throw new CPFInvalidoExeption("Não é possivel aceitar cpf nulo");
@@ -29,6 +39,38 @@ public class Locatario implements IPrinter {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
+        this.email = email;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
         this.email = email;
     }
 

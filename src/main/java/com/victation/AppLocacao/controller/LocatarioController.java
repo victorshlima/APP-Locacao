@@ -20,24 +20,11 @@ public class LocatarioController {
 
     private final LocatarioService locatarioService;
     private static Integer id =1;
-    private static Map<String, Cliente> mapaCliente = new HashMap<String, Cliente>();
+    private static Map<String, Locatario> mapaLocatario = new HashMap<>();
 
     public LocatarioController(LocatarioService locatarioService) {
         this.locatarioService = locatarioService;
     }
-
-    public static void incluir(Cliente cliente){
-        mapaCliente.put(cliente.getEmail(), cliente);
-        AppImpressao.relatorio("\n Locacao " + cliente.getNome() + " incuido com sucesso", cliente  );
-    }
-    public static Collection<Cliente> obterLista(){
-        return mapaCliente.values();
-    }
-
-//    @GetMapping("/locatario/lista")
-//    public String getindex (HttpServletRequest request){
-//        return "/locatario/lista";
-//    }
 
     @GetMapping(value = "/locatario")
     public String telaCadastro(){

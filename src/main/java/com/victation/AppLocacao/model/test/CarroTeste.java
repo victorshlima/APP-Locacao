@@ -25,7 +25,7 @@ public class CarroTeste implements ApplicationRunner  {
     public void run(ApplicationArguments args) {
 
         String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
-        String arq = "carro.txt";
+        String arq = "automoveis.txt";
         String fileName = dir + arq;
         System.out.println(fileName);
 
@@ -37,17 +37,18 @@ public class CarroTeste implements ApplicationRunner  {
                 String linha = null;
                 while ((linha = leitura.readLine()) != null) {
                     String[] campos = linha.split(";");
-
-                    try {
-                        Carro carro = new Carro(
-                                Integer.valueOf(campos[0]),
-                                campos[1],
-                                campos[2],
-                                Integer.valueOf(campos[3])
-                        );
-                        carroService.incluir(carro);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    if ("C".equals(campos[0])) {
+                        try {
+                            Carro carro = new Carro(
+                                    Integer.valueOf(campos[1]),
+                                    campos[2],
+                                    campos[3],
+                                    Integer.valueOf(campos[4])
+                            );
+                            carroService.incluir(carro);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
                 System.out.println(leitura.readLine());

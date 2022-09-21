@@ -28,14 +28,14 @@ public class Locacao implements IPrinter {
         if(locatario == null){
             throw new LocatarioNullExecption("Solicitante não pode ser nulo");
         }
-
-        if(automoveis.isEmpty()){
-            throw new AutomovelNullExecption("Objeto Nulo, necessario associar um objeto automóvel na locação");
-        }
-
-        if(automoveis.isEmpty()){
-            throw new AutomovelNullExecption("Nõa pode fazer uma solicitação sem Automoveis");
-        }
+//
+//        if(automoveis.isEmpty()){
+//            throw new AutomovelNullExecption("Objeto Nulo, necessario associar um objeto automóvel na locação");
+//        }
+//
+//        if(automoveis.isEmpty()){
+//            throw new AutomovelNullExecption("Nõa pode fazer uma solicitação sem Automoveis");
+//        }
 
         this.dataLocacao = LocalDateTime.now();
         this.locatario = locatario;

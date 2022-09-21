@@ -43,22 +43,17 @@
         <tr>
             <th>marca</th>
             <th>modelo</th>
-            <th>Portas</th>
-            <th>cilindradas</th>
-            <th>chassi</th>
-            <th>placa</th>
-            <th>lotacao</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>GOL</td>
-            <td>Bola</td>
-            <td>2</td>
-            <td>1.2</td>
-            <td>CHASSI00011231321</td>
-            <td>PLACA-Y293</td>
-            <td>5</td>
+        <tr th:each="auto: ${listagem}">
+            <td th:text="${auto.id}"></td>
+            <td th:text="${auto.marca}"></td>
+            <td th:text="${auto.modelo}" ></td>
+            <td>
+                <a th:href="@{/auto/{id}/excluir(id=${auto.id})}">excluir</a>
+            </td>
+        </tr>
         </tr>
 
         </tbody>

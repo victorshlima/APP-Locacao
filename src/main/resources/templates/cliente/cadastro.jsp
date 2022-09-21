@@ -28,7 +28,7 @@
         <label for="senha" class="form-label">Password:</label>
         <input type="password" class="form-control" id="senha" placeholder="Entre com sua senha" name="senha">
     </div>
-    <button type="submit" class="btn btn-primary">Castrar</button>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
 </form>
 </div>
 

@@ -1,4 +1,8 @@
 
+
+https://trello.com/c/nDaD4dRB/6-feature-06
+
+
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
