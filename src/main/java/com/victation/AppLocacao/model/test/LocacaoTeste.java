@@ -66,7 +66,8 @@ public class LocacaoTeste implements ApplicationRunner {
                                 locacao.setDescricao(campos[1]);
                                 locacao.setWeb(Boolean.valueOf(campos[2]));
                             locacoes.add(locacao);
-                            } catch ( AutomovelNullExecption | CPFInvalidoExeption| LocatarioNullExecption e) {
+                            } catch ( AutomovelNullExecption | //CPFInvalidoExeption|
+                                    LocatarioNullExecption e) {
                                 e.printStackTrace();
                             }
                             break;

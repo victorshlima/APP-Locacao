@@ -24,7 +24,7 @@ public class LocatarioService {
 
     public void incluir(Locatario locatario){
         mapaLocatario.put(locatario.getId(), locatario);
-        AppImpressao.relatorio("Cliente " + locatario.getNome() + " incuido com sucesso", locatario);
+       AppImpressao.relatorio("Cliente " + locatario.getNome() + " incuido com sucesso", locatario);
     }
 
 }

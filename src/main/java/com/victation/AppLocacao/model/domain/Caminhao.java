@@ -2,16 +2,16 @@ package com.victation.AppLocacao.model.domain;
 
 
 import com.victation.AppLocacao.model.domain.exeptions.ValorEixosInvalidoException;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+//import lombok.AllArgsConstructor;
+//import lombok.Builder;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
 
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+//@Data
+//@Builder
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Caminhao extends Automovel{
 
      //http://www.guiadotrc.com.br/noticias/noticiaID.asp?id=36008
@@ -20,6 +20,14 @@ public class Caminhao extends Automovel{
     public String tipo; //enum - Toco - Truck - VUC ...
     public int eixos;
     public int capacidadeCarga;
+
+    public Caminhao(Integer id, String tipo, int eixos, int capacidadeCarga) {
+        this.id = id;
+        this.tipo = tipo;
+        this.eixos = eixos;
+        this.capacidadeCarga = capacidadeCarga;
+    }
+
 
     @Override
     public float calcularValorLocacao() throws ValorEixosInvalidoException {
@@ -37,6 +45,43 @@ public class Caminhao extends Automovel{
                 ", capacidadeCarga=" + capacidadeCarga +
                 ";" + super.toString() +
                 '}';
+    }
+
+
+
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getEixos() {
+        return eixos;
+    }
+
+    public void setEixos(int eixos) {
+        this.eixos = eixos;
+    }
+
+    public int getCapacidadeCarga() {
+        return capacidadeCarga;
+    }
+
+    public void setCapacidadeCarga(int capacidadeCarga) {
+        this.capacidadeCarga = capacidadeCarga;
     }
 
     @Override

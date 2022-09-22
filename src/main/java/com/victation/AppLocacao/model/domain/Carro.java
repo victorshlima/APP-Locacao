@@ -1,16 +1,16 @@
 package com.victation.AppLocacao.model.domain;
 
 import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInvalidoException;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+//import lombok.AllArgsConstructor;
+//import lombok.Builder;
+//import lombok.Data;
+//import lombok.NoArgsConstructor;
+//
+//
+//@Data
+//@Builder
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Carro extends Automovel{
 
     public Integer id;
@@ -19,6 +19,7 @@ public class Carro extends Automovel{
 
 
     public Carro(Integer id, String marca, String modelo, int portas) {
+        super();
         this.id = id;
         super.marca =marca;
         super.modelo = modelo;
@@ -55,4 +56,17 @@ public class Carro extends Automovel{
         System.out.println("#Carro");
         System.out.println(this);
     }
+
+
+    public int getPortas() {
+        return portas;
+    }
+
+    public void setPortas(int portas) {
+        this.portas = portas;
+    }
+
+
+
+
 }

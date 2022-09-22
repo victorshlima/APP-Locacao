@@ -1,19 +1,19 @@
 package com.victation.AppLocacao.model.domain;
 
 import com.victation.AppLocacao.interfaces.IPrinter;
-import com.victation.AppLocacao.model.domain.exeptions.CPFInvalidoExeption;
-import lombok.*;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 
 @Entity
-@Table(name = "locatario")
-public class Locatario implements IPrinter {
+@Table
+public class Locatario  implements IPrinter
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
     private Integer id;
 
     public String nome;
@@ -21,26 +21,36 @@ public class Locatario implements IPrinter {
     public String cpf;
     public String email;
 
-    public Locatario() {
-    }
-
-
-    public Locatario(Integer id, String nome, String sobrenome, String cpf, String email )
-     throws CPFInvalidoExeption {
-
-       if ( cpf == null){
-            throw new CPFInvalidoExeption("Não é possivel aceitar cpf nulo");
-        }
-
-        if ( cpf.isEmpty()){
-            throw new CPFInvalidoExeption("Não é possivel aceitar cpf nulo");
-        }
+    public Locatario(Integer id, String nome, String sobrenome, String cpf, String email) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.cpf = cpf;
         this.email = email;
     }
+
+    public Locatario() {
+
+    }
+
+//    public Locatario(Integer id, String nome, String sobrenome, String cpf, String email )
+//     throws CPFInvalidoExeption {
+//
+//       if ( cpf == null){
+//            throw new CPFInvalidoExeption("Não é possivel aceitar cpf nulo");
+//        }
+//
+//        if ( cpf.isEmpty()){
+//            throw new CPFInvalidoExeption("Não é possivel aceitar cpf nulo");
+//        }
+//        this.id = id;
+//        this.nome = nome;
+//        this.sobrenome = sobrenome;
+//        this.cpf = cpf;
+//        this.email = email;
+//    }
+
+
 
     public String getNome() {
         return nome;
@@ -96,5 +106,18 @@ public class Locatario implements IPrinter {
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Locatario)) return false;
+        Locatario locatario = (Locatario) o;
+        return Objects.equals(id, locatario.id) && Objects.equals(nome, locatario.nome) && Objects.equals(sobrenome, locatario.sobrenome) && Objects.equals(cpf, locatario.cpf) && Objects.equals(email, locatario.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, sobrenome, cpf, email);
     }
 }

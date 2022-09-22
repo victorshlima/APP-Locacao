@@ -1,19 +1,22 @@
 package com.victation.AppLocacao.model.domain;
 
 import com.victation.AppLocacao.interfaces.IPrinter;
-import com.victation.AppLocacao.model.domain.exeptions.CPFInvalidoExeption;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
 public class Cliente implements IPrinter {
 
+    private Integer id;
     public String nome;
     public String email;
     public String senha;
 
     public Cliente(String nome, String email, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
+
+    public Cliente(Integer id, String nome, String email, String senha) {
+        this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -41,6 +44,17 @@ public class Cliente implements IPrinter {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Cliente() {
     }
 
     @Override

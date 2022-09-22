@@ -3,16 +3,16 @@ package com.victation.AppLocacao.model.domain;
 import com.victation.AppLocacao.interfaces.IPrinter;
 import com.victation.AppLocacao.model.domain.exeptions.AutomovelNullExecption;
 import com.victation.AppLocacao.model.domain.exeptions.LocatarioNullExecption;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+//import lombok.AllArgsConstructor;
+//import lombok.Builder;
+//import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Builder
 public class Locacao implements IPrinter {
 
     private Integer id;
@@ -120,4 +120,17 @@ public class Locacao implements IPrinter {
                 ", automoveis=" + automoveis +
                 '}';
     }
+
+    public Locacao(Integer id, String descricao, LocalDateTime dataLocacao, LocalDateTime dataDevolucao, boolean web, Locatario locatario, Set<Automovel> automoveis) {
+        this.id = id;
+        this.descricao = descricao;
+        this.dataLocacao = dataLocacao;
+        this.dataDevolucao = dataDevolucao;
+        this.web = web;
+        this.locatario = locatario;
+        this.automoveis = automoveis;
+    }
+
+
+
 }
