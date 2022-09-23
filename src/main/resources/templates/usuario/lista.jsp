@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +22,6 @@
                 <a class="nav-link" href="/carro/lista">carro</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/automovel/lista">automovel</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/locacao/lista">locacao</a>
             </li>
             <li class="nav-item">
@@ -41,11 +36,11 @@
 
     <h4>
         <td>
-            <a th:href="@{/cliente}">novo</a>
+            <a th:href="@{/usuario}">novo</a>
         </td>
     </h4>
 
-    <h3>Cliente: Cliente</h3>
+    <h3>Usuario: Usuario</h3>
     <table class="table table-dark table-striped">
         <thead>
         <tr>
@@ -57,12 +52,12 @@
         </thead>
     <tbody>
         <!--/*@thymesVar id="carroLista" type="java"*/-->
-        <tr th:each="c: ${clienteLista}">
+        <tr th:each="c: ${usuarioLista}">
             <td th:text="${c.nome}"></td>
             <td th:text="${c.email}"></td>
             <td th:text="${c.senha}" ></td>
             <td>
-                <a th:href="@{/cliente/{email}/excluir(email=${c.email})}">excluir</a>
+                <a th:href="@{/usuario/{email}/excluir(email=${c.email})}">excluir</a>
             </td>
         </tr>
     </tbody>

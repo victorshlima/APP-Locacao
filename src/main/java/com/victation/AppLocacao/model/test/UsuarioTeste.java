@@ -1,7 +1,7 @@
 package com.victation.AppLocacao.model.test;
 
-import com.victation.AppLocacao.model.domain.Cliente;
-import com.victation.AppLocacao.service.ClienteService;
+import com.victation.AppLocacao.model.domain.Usuario;
+import com.victation.AppLocacao.service.UsuarioService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -11,21 +11,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-@Order(2)
+@Order(1)
 @Component
-public class ClienteTeste implements ApplicationRunner {
+public class UsuarioTeste implements ApplicationRunner {
 
-    private final ClienteService clienteService;
+    private final UsuarioService usuarioService;
 
-    public ClienteTeste(ClienteService clienteService) {
-        this.clienteService = clienteService;
+    public UsuarioTeste(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
         String dir = "//home//wid_vlima//dev//git_study//infnet//APP-Locacao//dev//";
-        String arq = "cliente.txt";
+        String arq = "usuario.txt";
         String fileName =dir + arq;
         System.out.println(fileName);
 
@@ -39,12 +39,12 @@ public class ClienteTeste implements ApplicationRunner {
                     String[] campos = linha.split(";");
 
                     try {
-                     Cliente cliente1 = new Cliente(
+                     Usuario usuario1 = new Usuario(
                                 campos[0],
                                 campos[1],
                                 campos[2]
                         );
-                        clienteService.incluir( cliente1);
+                        usuarioService.incluir(usuario1);
                     } catch ( Exception e) {
                         e.printStackTrace();
                     }

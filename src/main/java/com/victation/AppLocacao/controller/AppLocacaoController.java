@@ -1,8 +1,8 @@
 package com.victation.AppLocacao.controller;
 
-import com.victation.AppLocacao.model.domain.Cliente;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.service.AppService;
-import com.victation.AppLocacao.service.ClienteService;
+import com.victation.AppLocacao.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,19 +19,12 @@ import javax.servlet.http.HttpSession;
 public class AppLocacaoController {
 
     @Autowired
-    private ClienteService clienteService;
-
+    private UsuarioService usuarioService;
     @Autowired
     private AppService appService;
 
     @GetMapping("/")
     public String getHome (Model model){
-        String nome = "";
-
-        System.out.println(nome);
-        System.out.println("Projeto " +appService.obterProjeto().getNome());
-
-        model.addAttribute("user",nome);
         model.addAttribute("projeto",appService.obterProjeto());
         return "home";
     }
@@ -43,12 +36,11 @@ public class AppLocacaoController {
 
     @PostMapping("/login")
     public String getLogin (Model model, @RequestParam String email, @RequestParam  String senha ){
-       // clienteService = new ClienteService(); isso ta matando a inicialização da instancia com os dados do CSV!!!
-        Cliente cliente = clienteService.validar(email,senha);
+        Usuario usuario = usuarioService.validar(email,senha);
         System.out.println("tentativa login" + email+senha  );
-        if( cliente != null){
-            System.out.println("localizado login" +cliente.getEmail());
-            model.addAttribute("user",cliente);
+        if( usuario != null){
+            System.out.println("localizado login" + usuario.getEmail());
+            model.addAttribute("user", usuario);
             //  return "/";
             //return "home";
             return "redirect:/";
@@ -57,17 +49,15 @@ public class AppLocacaoController {
         //return "redirect:/login";
     }
 
-    @GetMapping("/cliente/cadastro")
+    @GetMapping("/usuario/cadastro")
     public String getSignUp (){
-        return "/cliente/cadastro";
+        return "/usuario/cadastro";
     }
 
-    @GetMapping("/logout")
-    public String getLogout(HttpSession httpSession, SessionStatus sessionStatus){
-        sessionStatus.isComplete();
-        httpSession.removeAttribute("user");
-        System.out.println("Logout");
-
+    @GetMapping(value = "/logout")
+    public String logout(HttpSession session, SessionStatus status) {
+        status.setComplete();
+        session.removeAttribute("user");
         return "redirect:/";
     }
 

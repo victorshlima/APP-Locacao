@@ -22,9 +22,6 @@
                 <a class="nav-link" href="/carro/lista">carro</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/automovel/lista">automovel</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/locacao/lista">locacao</a>
             </li>
             <li class="nav-item">
@@ -35,13 +32,10 @@
 </nav>
 
 <div class="container mt-3">
-
     <h3>Classe: Locatario</h3>
-
-
     <h4>
         <td>
-            <a th:href="@{/locacao}">novo</a>
+            <a th:href="@{/locatario}">novo</a>
         </td>
     </h4>
 
@@ -53,6 +47,7 @@
             <th>sobrenome</th>
             <th>cpf</th>
             <th>email</th>
+            <th>Usuario</th>
             <th>acao</th>
         </tr>
         </thead>
@@ -64,6 +59,7 @@
             <td th:text="${l.sobrenome}"></td>
             <td th:text="${l.cpf}"></td>
             <td th:text="${l.email}"></td>
+            <td th:text="${l.usuario.email}"></td>
             <td>
                 <a th:href="@{/locatario/{id}/excluir(id=${l.id})}">excluir</a>
             </td>

@@ -7,12 +7,20 @@ import com.victation.AppLocacao.model.domain.exeptions.ValorEixosInvalidoExcepti
 import com.victation.AppLocacao.model.domain.exeptions.ValorMotoInvalidoException;
 //import lombok.Data;
 
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
-//@Data
+@Entity
+@Table
+@Inheritance(strategy = InheritanceType.JOINED) // possibilita acessar todas as tabelas que herdam...
 public abstract class  Automovel  implements IPrinter { // autmovel por sere abstract não pode ser instaciada
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
+
+
     public String marca;
     public String modelo;
     public int cilindradas;
@@ -22,6 +30,16 @@ public abstract class  Automovel  implements IPrinter { // autmovel por sere abs
     public int lotacao;
     public int qtdVeiculos;
     public int qtdVeiculosDisponiveis;
+
+    @ManyToMany(mappedBy = "automoveis")
+    private List<Locacao> locacoes;
+
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
+
+    protected Automovel() {
+    }
 
     public abstract float calcularValorLocacao() throws QuantidadePortasCarroInvalidoException, ValorMotoInvalidoException, ValorEixosInvalidoException;
 
@@ -53,6 +71,22 @@ public abstract class  Automovel  implements IPrinter { // autmovel por sere abs
     @Override
     public int hashCode() {
         return Objects.hash(chassi);
+    }
+
+    public List<Locacao> getLocacoes() {
+        return locacoes;
+    }
+
+    public void setLocacoes(List<Locacao> locacoes) {
+        this.locacoes = locacoes;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Integer getId() {

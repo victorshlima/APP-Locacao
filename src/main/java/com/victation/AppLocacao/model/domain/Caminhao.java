@@ -2,21 +2,23 @@ package com.victation.AppLocacao.model.domain;
 
 
 import com.victation.AppLocacao.model.domain.exeptions.ValorEixosInvalidoException;
+
+import javax.persistence.*;
 //import lombok.AllArgsConstructor;
 //import lombok.Builder;
 //import lombok.Data;
 //import lombok.NoArgsConstructor;
 
 
-//@Data
-//@Builder
-//@NoArgsConstructor
-//@AllArgsConstructor
+@Entity
+@Table
 public class Caminhao extends Automovel{
 
      //http://www.guiadotrc.com.br/noticias/noticiaID.asp?id=36008
-
+     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
+
     public String tipo; //enum - Toco - Truck - VUC ...
     public int eixos;
     public int capacidadeCarga;
@@ -26,6 +28,10 @@ public class Caminhao extends Automovel{
         this.tipo = tipo;
         this.eixos = eixos;
         this.capacidadeCarga = capacidadeCarga;
+    }
+
+    public Caminhao() {
+
     }
 
 

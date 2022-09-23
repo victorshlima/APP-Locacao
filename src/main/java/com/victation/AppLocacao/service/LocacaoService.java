@@ -1,7 +1,9 @@
 package com.victation.AppLocacao.service;
 
 import com.victation.AppLocacao.model.domain.Locacao;
+import com.victation.AppLocacao.model.repository.LocacaoRepository;
 import com.victation.AppLocacao.model.test.AppImpressao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -11,19 +13,20 @@ import java.util.Map;
 @Service
 public class LocacaoService {
 
-    private static Integer id =1;
-    private static Map<Integer, Locacao> mapaLocacao = new HashMap<Integer, Locacao>();
+
+    @Autowired
+    private LocacaoRepository locacaoRepository;
 
     public Collection<Locacao> obterLista(){
-        return mapaLocacao.values();
+        return (Collection<Locacao>) locacaoRepository.findAll();
     }
 
     public  void excluir(Integer id){
-        mapaLocacao.remove(id);
+        locacaoRepository.deleteById(id);
     }
 
     public void incluir(Locacao locacao){
-        mapaLocacao.put(locacao.getId(), locacao);
+        locacaoRepository.save(locacao);
         AppImpressao.relatorio("Locacao " + locacao.getId() + " incuido com sucesso", locacao);
     }
 

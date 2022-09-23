@@ -1,6 +1,7 @@
 package com.victation.AppLocacao.model.test;
 
 import com.victation.AppLocacao.model.domain.Locatario;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.service.LocatarioService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -11,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-@Order(1)
+@Order(2)
 @Component
 public class LocatarioTeste implements ApplicationRunner {
 
@@ -28,7 +29,11 @@ public class LocatarioTeste implements ApplicationRunner {
         String arq = "locatario.txt";
         String fileName = dir + arq;
         System.out.println(fileName);
-
+        Usuario usuario = new Usuario();
+        usuario.setId(1);
+        usuario.setNome("teste");
+        usuario.setSenha("teste");
+        usuario.setEmail("teste");
         try {
             try {
                 FileReader fileReader = new FileReader(fileName);
@@ -46,6 +51,7 @@ public class LocatarioTeste implements ApplicationRunner {
                                 campos[3],
                                 campos[4]
                         );
+                        locatario.setUsuario(usuario);
                         locatarioService.incluir(locatario);
                     } catch (Exception e) {
                         e.printStackTrace();

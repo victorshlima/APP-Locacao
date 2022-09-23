@@ -1,6 +1,9 @@
 package com.victation.AppLocacao.model.domain;
 
 import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInvalidoException;
+
+import javax.persistence.*;
+
 //import lombok.AllArgsConstructor;
 //import lombok.Builder;
 //import lombok.Data;
@@ -11,8 +14,11 @@ import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInva
 //@Builder
 //@NoArgsConstructor
 //@AllArgsConstructor
+@Entity
+@Table
 public class Carro extends Automovel{
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     public int portas;
 
@@ -24,6 +30,10 @@ public class Carro extends Automovel{
         super.marca =marca;
         super.modelo = modelo;
         this.portas = portas;
+    }
+
+    public Carro() {
+
     }
 
     public Integer getId() {

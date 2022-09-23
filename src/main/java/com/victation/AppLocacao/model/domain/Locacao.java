@@ -6,22 +6,30 @@ import com.victation.AppLocacao.model.domain.exeptions.LocatarioNullExecption;
 //import lombok.AllArgsConstructor;
 //import lombok.Builder;
 //import lombok.NoArgsConstructor;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-//@AllArgsConstructor
-//@NoArgsConstructor
-//@Builder
+@Entity
+@Table
 public class Locacao implements IPrinter {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String descricao;
     private LocalDateTime dataLocacao;
     private LocalDateTime dataDevolucao;
     private boolean web;
+    @OneToOne(cascade = CascadeType.DETACH)
+    @JoinColumn(name = "idLocatario")
     private Locatario locatario;
+    @ManyToMany(cascade = CascadeType.DETACH)
     private Set<Automovel> automoveis = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 
     public Locacao(Locatario locatario, Set<Automovel> automoveis) throws LocatarioNullExecption, AutomovelNullExecption {
 
@@ -40,6 +48,18 @@ public class Locacao implements IPrinter {
         this.dataLocacao = LocalDateTime.now();
         this.locatario = locatario;
         this.automoveis =automoveis;
+    }
+
+    public Locacao() {
+
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Integer getId() {

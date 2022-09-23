@@ -1,17 +1,16 @@
 package com.victation.AppLocacao.controller;
 
-import com.victation.AppLocacao.model.domain.Cliente;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.model.domain.Locatario;
-import com.victation.AppLocacao.model.test.AppImpressao;
 import com.victation.AppLocacao.service.LocatarioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,14 +31,16 @@ public class LocatarioController {
     }
 
     @GetMapping("/locatario/lista")
-    public String telaLista (HttpServletRequest request, Model model){
-        model.addAttribute("listagem", locatarioService.obterLista());
+    public String telaLista (HttpServletRequest request, Model model, @SessionAttribute("user") Usuario usuario){
+        model.addAttribute("listagem", locatarioService.obterLista(usuario));
         return "/locatario/lista";
     }
 
     @PostMapping(value ="/locatario/incluir" )
-    public String incluir(Locatario locatario){
-        locatario.setId(id++);
+    public String incluir(Locatario locatario, @SessionAttribute("user") Usuario usuario){
+
+        locatario.setUsuario(usuario);
+
         locatarioService.incluir(locatario);
         return  "redirect:/locatario/lista";
     }

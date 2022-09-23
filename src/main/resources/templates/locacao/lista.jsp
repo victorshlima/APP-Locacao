@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +20,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/carro/lista">carro</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/automovel/lista">automovel</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/locacao/lista">locacao</a>

@@ -1,6 +1,6 @@
 package com.victation.AppLocacao.controller;
 
-import com.victation.AppLocacao.model.domain.Cliente;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.model.domain.Moto;
 import com.victation.AppLocacao.model.test.AppImpressao;
 import com.victation.AppLocacao.service.MotoService;
@@ -20,17 +20,17 @@ public class MotoController {
 
     private final MotoService motoService;
     private static Integer id =1;
-    private static Map<String, Cliente> mapaCliente = new HashMap<String, Cliente>();
+    private static Map<String, Usuario> mapaCliente = new HashMap<String, Usuario>();
 
     public MotoController(MotoService motoService) {
         this.motoService = motoService;
     }
 
-    public static void incluir(Cliente cliente){
-        mapaCliente.put(cliente.getEmail(), cliente);
-        AppImpressao.relatorio("\n Locacao " + cliente.getNome() + " incuido com sucesso", cliente  );
+    public static void incluir(Usuario usuario){
+        mapaCliente.put(usuario.getEmail(), usuario);
+        AppImpressao.relatorio("\n Locacao " + usuario.getNome() + " incuido com sucesso", usuario);
     }
-    public static Collection<Cliente> obterLista(){
+    public static Collection<Usuario> obterLista(){
         return mapaCliente.values();
     }
 

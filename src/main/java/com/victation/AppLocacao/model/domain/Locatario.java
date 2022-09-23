@@ -1,7 +1,6 @@
 package com.victation.AppLocacao.model.domain;
 
 import com.victation.AppLocacao.interfaces.IPrinter;
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -20,6 +19,19 @@ public class Locatario  implements IPrinter
     public String sobrenome;
     public String cpf;
     public String email;
+
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")// con join collum ele cria um relacionamento apenas por chave primaria
+    // é possível fazer esse relacionamento sem @JoinClounm, desta forma criaria uma tabela de relacionamento
+    public Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public Locatario(Integer id, String nome, String sobrenome, String cpf, String email) {
         this.id = id;

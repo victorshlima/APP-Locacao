@@ -13,7 +13,7 @@
                 <a class="nav-link active" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/cliente/lista">Cliente</a>
+                <a class="nav-link" href="/usuario/lista">Usuario</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/automovel/lista">automovel</a>
@@ -23,9 +23,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/carro/lista">carro</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/automovel/lista">automovel</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/locacao/lista">locacao</a>
