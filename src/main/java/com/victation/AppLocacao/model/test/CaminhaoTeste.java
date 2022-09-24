@@ -1,7 +1,10 @@
 package com.victation.AppLocacao.model.test;
 
 import com.victation.AppLocacao.model.domain.Caminhao;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.service.CaminhaoService;
+import com.victation.AppLocacao.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -17,7 +20,10 @@ import java.io.IOException;
 @Order(5)
 public class CaminhaoTeste implements ApplicationRunner  {
 
-    private final CaminhaoService caminhaoService;
+    private CaminhaoService caminhaoService;
+
+    @Autowired
+    private UsuarioService usuarioService;
 
     public CaminhaoTeste(CaminhaoService caminhaoService) {
         this.caminhaoService = caminhaoService;
@@ -30,6 +36,13 @@ public class CaminhaoTeste implements ApplicationRunner  {
         String arq = "automoveis.txt";
         String fileName = dir + arq;
         System.out.println(fileName);
+
+        Usuario usuario = new Usuario();
+        usuario.setNome("teste");
+        usuario.setSenha("teste");
+        usuario.setEmail("teste");
+        usuarioService.incluir(usuario);
+
 
         try {
             try {
@@ -47,7 +60,8 @@ public class CaminhaoTeste implements ApplicationRunner  {
                                     Integer.parseInt(campos[3]),
                                     Integer.parseInt(campos[4])
                             );
-                            caminhaoService.incluir(caminhao);
+                            caminhao.setUsuario(usuario);
+                            caminhaoService.incluir(caminhao, usuario);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

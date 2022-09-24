@@ -3,13 +3,11 @@ package com.victation.AppLocacao.model.domain;
 import com.victation.AppLocacao.interfaces.IPrinter;
 import com.victation.AppLocacao.model.domain.exeptions.AutomovelNullExecption;
 import com.victation.AppLocacao.model.domain.exeptions.LocatarioNullExecption;
-//import lombok.AllArgsConstructor;
-//import lombok.Builder;
-//import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table
@@ -25,13 +23,14 @@ public class Locacao implements IPrinter {
     @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "idLocatario")
     private Locatario locatario;
-    @ManyToMany(cascade = CascadeType.DETACH)
-    private Set<Automovel> automoveis = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.DETACH)//para cadastrar uma locação é necessário um produto existente
+    private List<Automovel> automoveis = new ArrayList<>();
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 
-    public Locacao(Locatario locatario, Set<Automovel> automoveis) throws LocatarioNullExecption, AutomovelNullExecption {
+
+    public Locacao(Locatario locatario, List<Automovel> automoveis) throws LocatarioNullExecption, AutomovelNullExecption {
 
         if(locatario == null){
             throw new LocatarioNullExecption("Solicitante não pode ser nulo");
@@ -94,7 +93,7 @@ public class Locacao implements IPrinter {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public Set<Automovel> getAutomoveis() {
+    public List<Automovel> getAutomoveis() {
         return automoveis;
     }
 
@@ -102,7 +101,7 @@ public class Locacao implements IPrinter {
         this.automoveis.add(automovel);
     }
 
-    public void setAutomoveis(Set<Automovel> automoveis) {
+    public void setAutomoveis(List<Automovel> automoveis) {
         this.automoveis= automoveis;
     }
 
@@ -141,7 +140,7 @@ public class Locacao implements IPrinter {
                 '}';
     }
 
-    public Locacao(Integer id, String descricao, LocalDateTime dataLocacao, LocalDateTime dataDevolucao, boolean web, Locatario locatario, Set<Automovel> automoveis) {
+    public Locacao(Integer id, String descricao, LocalDateTime dataLocacao, LocalDateTime dataDevolucao, boolean web, Locatario locatario, List<Automovel> automoveis) {
         this.id = id;
         this.descricao = descricao;
         this.dataLocacao = dataLocacao;

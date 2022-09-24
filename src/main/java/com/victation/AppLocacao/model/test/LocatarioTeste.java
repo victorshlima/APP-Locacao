@@ -3,6 +3,8 @@ package com.victation.AppLocacao.model.test;
 import com.victation.AppLocacao.model.domain.Locatario;
 import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.service.LocatarioService;
+import com.victation.AppLocacao.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -16,11 +18,12 @@ import java.io.IOException;
 @Component
 public class LocatarioTeste implements ApplicationRunner {
 
-    private final LocatarioService locatarioService;
+    @Autowired
+    private  LocatarioService locatarioService;
 
-    public LocatarioTeste(LocatarioService locatarioService) {
-        this.locatarioService = locatarioService;
-    }
+    @Autowired
+    private UsuarioService usuarioService;
+
 
     @Override
     public void run(ApplicationArguments args) {
@@ -29,11 +32,14 @@ public class LocatarioTeste implements ApplicationRunner {
         String arq = "locatario.txt";
         String fileName = dir + arq;
         System.out.println(fileName);
+
         Usuario usuario = new Usuario();
-        usuario.setId(1);
         usuario.setNome("teste");
         usuario.setSenha("teste");
         usuario.setEmail("teste");
+        usuarioService.incluir(usuario);
+
+
         try {
             try {
                 FileReader fileReader = new FileReader(fileName);

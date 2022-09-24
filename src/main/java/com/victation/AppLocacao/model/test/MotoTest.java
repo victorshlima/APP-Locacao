@@ -1,7 +1,10 @@
 package com.victation.AppLocacao.model.test;
 
 import com.victation.AppLocacao.model.domain.Moto;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.service.MotoService;
+import com.victation.AppLocacao.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -17,11 +20,11 @@ import java.io.IOException;
 @Order(7)
 public class MotoTest implements ApplicationRunner {
 
-    MotoService motoService;
+    @Autowired
+    private MotoService motoService;
 
-    public MotoTest(MotoService motoService) {
-        this.motoService = motoService;
-    }
+    @Autowired
+    private UsuarioService usuarioService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -30,6 +33,12 @@ public class MotoTest implements ApplicationRunner {
         String arq = "automoveis.txt";
         String fileName = dir + arq;
         System.out.println(fileName);
+
+        Usuario usuario = new Usuario();
+        usuario.setNome("teste");
+        usuario.setSenha("teste");
+        usuario.setEmail("teste");
+        usuarioService.incluir(usuario);
 
         try {
             try {
@@ -49,7 +58,8 @@ public class MotoTest implements ApplicationRunner {
                                     Integer.valueOf(campos[3]),
                                     campos[4]
                             );
-                            motoService.incluir(moto);
+                            moto.setUsuario(usuario);
+                            motoService.incluir(moto, usuario);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

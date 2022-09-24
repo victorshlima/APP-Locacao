@@ -1,12 +1,15 @@
 package com.victation.AppLocacao.controller;
 
 import com.victation.AppLocacao.model.domain.Caminhao;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.service.CaminhaoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,15 +18,9 @@ import java.util.Map;
 public class CaminhaoController {
 
     private final CaminhaoService caminhaoService;
-    private static Map<Integer, Caminhao> mapacaminhao = new HashMap<Integer, Caminhao>();
-    private static Integer id =1;
 
     public CaminhaoController(CaminhaoService caminhaoService) {
         this.caminhaoService = caminhaoService;
-    }
-
-    public static Collection<Caminhao> obterLista(){
-        return mapacaminhao.values();
     }
 
     public void excluir(Integer id){
@@ -36,9 +33,9 @@ public class CaminhaoController {
     }
 
     @GetMapping("/caminhao/lista")
-    public String telaLista (Model model){
+    public String telaLista (Model model, @SessionAttribute("user") Usuario user){
 
-        model.addAttribute("listagem", caminhaoService.obterLista());
+        model.addAttribute("listagem", caminhaoService.obterLista(user));
         return "/caminhao/lista";
     }
 
@@ -50,9 +47,8 @@ public class CaminhaoController {
     }
 
     @PostMapping(value ="/caminhao/incluir" )
-    public String incluir(Caminhao caminhao){
-        caminhao.setId(id++);
-        caminhaoService.incluir(caminhao);
+    public String incluir(Caminhao caminhao, @SessionAttribute("user")Usuario user){
+        caminhaoService.incluir(caminhao, user);
         return  "redirect:/caminhao/lista";
     }
 

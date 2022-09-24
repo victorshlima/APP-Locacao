@@ -20,7 +20,6 @@ public abstract class  Automovel  implements IPrinter { // autmovel por sere abs
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
 
-
     public String marca;
     public String modelo;
     public int cilindradas;
@@ -42,8 +41,6 @@ public abstract class  Automovel  implements IPrinter { // autmovel por sere abs
     }
 
     public abstract float calcularValorLocacao() throws QuantidadePortasCarroInvalidoException, ValorMotoInvalidoException, ValorEixosInvalidoException;
-
-
 
     @Override
     public String toString() {

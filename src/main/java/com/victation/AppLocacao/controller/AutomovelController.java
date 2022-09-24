@@ -1,12 +1,15 @@
 package com.victation.AppLocacao.controller;
 
 import com.victation.AppLocacao.model.domain.Automovel;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.service.AutomovelService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 import java.util.HashMap;
@@ -16,16 +19,9 @@ import java.util.Map;
 public class AutomovelController {
 
     private final AutomovelService automovelService;
-    private static Map<Integer, Automovel> mapaAutomovel = new HashMap<>();
-    private static Integer id =1;
-
 
     public AutomovelController(AutomovelService automovelService) {
         this.automovelService = automovelService;
-    }
-
-    public static Collection<Automovel> obterLista(){
-        return mapaAutomovel.values();
     }
 
     public void excluir(Integer id){
@@ -50,9 +46,8 @@ public class AutomovelController {
         return "redirect:automovel/lista";
     }
     @PostMapping(value ="automovel/incluir" )
-    public String incluir(Automovel automovel){
-        automovel.setId(id++);
-        automovelService.incluir(automovel);
+    public String incluir(Automovel automovel, @SessionAttribute("user")Usuario user){
+        automovelService.incluir(automovel, user);
         return  "redirect:automovel/lista";
     }
 

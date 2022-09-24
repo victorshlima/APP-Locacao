@@ -18,8 +18,6 @@ import java.util.Map;
 public class LocatarioController {
 
     private final LocatarioService locatarioService;
-    private static Integer id =1;
-    private static Map<String, Locatario> mapaLocatario = new HashMap<>();
 
     public LocatarioController(LocatarioService locatarioService) {
         this.locatarioService = locatarioService;

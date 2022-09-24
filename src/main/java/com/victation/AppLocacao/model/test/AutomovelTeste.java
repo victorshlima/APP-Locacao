@@ -5,6 +5,8 @@ import com.victation.AppLocacao.model.domain.*;
 import com.victation.AppLocacao.service.AutomovelService;
 import com.victation.AppLocacao.service.CarroService;
 import com.victation.AppLocacao.service.LocacaoService;
+import com.victation.AppLocacao.service.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -22,11 +24,12 @@ import java.util.Set;
 @Order(7)
 public class AutomovelTeste implements ApplicationRunner  {
 
-    private final AutomovelService automovelService;
+    @Autowired
+    private AutomovelService automovelService;
 
-    public AutomovelTeste(AutomovelService automovelService) {
-        this.automovelService = automovelService;
-    }
+    @Autowired
+    private UsuarioService usuarioService;
+
 
     private static Integer id =1;
 
@@ -37,6 +40,12 @@ public class AutomovelTeste implements ApplicationRunner  {
         String arq = "automoveis.txt";
         String fileName =dir + arq;
         System.out.println(fileName);
+
+        Usuario usuario = new Usuario();
+        usuario.setNome("teste");
+        usuario.setSenha("teste");
+        usuario.setEmail("teste");
+        usuarioService.incluir(usuario);
 
 
         System.out.println("#################################################################");
@@ -62,7 +71,7 @@ public class AutomovelTeste implements ApplicationRunner  {
                                         campos[4]
                                 );
 
-                                automovelService.incluir(moto);
+                                automovelService.incluir(moto, usuario);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -76,7 +85,7 @@ public class AutomovelTeste implements ApplicationRunner  {
                                         campos[3],
                                         Integer.valueOf(campos[4])
                                 );
-                                automovelService.incluir(carro);
+                                automovelService.incluir(carro, usuario);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -90,7 +99,7 @@ public class AutomovelTeste implements ApplicationRunner  {
                                         Integer.parseInt(campos[3]),
                                         Integer.parseInt(campos[4])
                                 );
-                                automovelService.incluir(caminhao);
+                                automovelService.incluir(caminhao, usuario);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }

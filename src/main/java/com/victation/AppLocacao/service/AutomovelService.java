@@ -1,8 +1,10 @@
 package com.victation.AppLocacao.service;
 
 import com.victation.AppLocacao.model.domain.Automovel;
-import com.victation.AppLocacao.model.domain.Caminhao;
+import com.victation.AppLocacao.model.domain.Usuario;
+import com.victation.AppLocacao.model.repository.AutomovelRepository;
 import com.victation.AppLocacao.model.test.AppImpressao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -10,19 +12,19 @@ import java.util.*;
 @Service
 public class AutomovelService {
 
-    private final CarroService carroService;
-    private final CaminhaoService caminhaoService;
-    private final MotoService motoService;
+    @Autowired
+    private AutomovelRepository automovelRepository;
+
+    @Autowired
+    private  CarroService carroService;
+
+    @Autowired
+    private  CaminhaoService caminhaoService;
+
+    @Autowired
+    private  MotoService motoService;
 
     List<Automovel> automoveis = new ArrayList<>();
-
-    public AutomovelService(CarroService carroService, CaminhaoService caminhaoService, MotoService motoService) {
-        this.carroService = carroService;
-        this.caminhaoService = caminhaoService;
-        this.motoService = motoService;
-    }
-
-    private Map<Integer, Automovel> mapaAutomovel = new HashMap< >();
 
     public List<Automovel> obterLista(){
 
@@ -35,11 +37,12 @@ public class AutomovelService {
     }
 
     public  void excluir(Integer id){
-        mapaAutomovel.remove(id);
+        automovelRepository.deleteById(id);
     }
 
-    public void incluir(Automovel automovel){
-        mapaAutomovel.put(automovel.getId(), automovel);
+    public void incluir(Automovel automovel, Usuario user){
+        automovel.setUsuario(user);
+        automovelRepository.save(automovel);
         AppImpressao.relatorio("Automovel " + automovel.getId() + " incuido com sucesso", automovel);
     }
 

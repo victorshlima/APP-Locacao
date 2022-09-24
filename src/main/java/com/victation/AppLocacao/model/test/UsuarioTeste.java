@@ -17,6 +17,7 @@ public class UsuarioTeste implements ApplicationRunner {
 
     private final UsuarioService usuarioService;
 
+
     public UsuarioTeste(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
@@ -28,6 +29,7 @@ public class UsuarioTeste implements ApplicationRunner {
         String arq = "usuario.txt";
         String fileName =dir + arq;
         System.out.println(fileName);
+
 
         try {
             try {
