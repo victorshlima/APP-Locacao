@@ -41,8 +41,10 @@
     <table class="table table-dark table-striped">
         <thead>
         <tr>
+            <th>id</th>
             <th>marca</th>
             <th>modelo</th>
+            <th>ação</th>
         </tr>
         </thead>
         <tbody>
@@ -51,7 +53,7 @@
             <td th:text="${auto.marca}"></td>
             <td th:text="${auto.modelo}" ></td>
             <td>
-                <a th:href="@{/auto/{id}/excluir(id=${auto.id})}">excluir</a>
+                <a th:href="@{/automovel/{id}/excluir(id=${auto.id})}">excluir</a>
             </td>
         </tr>
         </tr>

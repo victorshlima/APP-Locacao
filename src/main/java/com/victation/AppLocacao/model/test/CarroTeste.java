@@ -3,6 +3,7 @@ package com.victation.AppLocacao.model.test;
 
 import com.victation.AppLocacao.model.domain.Carro;
 import com.victation.AppLocacao.model.domain.Usuario;
+import com.victation.AppLocacao.model.repository.UsuarioRepository;
 import com.victation.AppLocacao.service.CarroService;
 import com.victation.AppLocacao.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ public class CarroTeste implements ApplicationRunner  {
 
     @Autowired
     private UsuarioService usuarioService;
-
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public CarroTeste(CarroService carroService) {
         this.carroService = carroService;
@@ -36,12 +38,8 @@ public class CarroTeste implements ApplicationRunner  {
         String fileName = dir + arq;
         System.out.println(fileName);
 
-        Usuario usuario = new Usuario();
-        usuario.setNome("teste");
-        usuario.setSenha("teste");
-        usuario.setEmail("teste");
+        Usuario usuario = usuarioRepository.findById(1).get();
         usuarioService.incluir(usuario);
-
 
         try {
             try {

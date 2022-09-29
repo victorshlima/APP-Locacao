@@ -30,6 +30,17 @@ public class UsuarioTeste implements ApplicationRunner {
         String fileName =dir + arq;
         System.out.println(fileName);
 
+        Usuario usuario = new Usuario();
+        usuario.setId(1);
+        usuario.setNome("teste");
+        usuario.setSenha("teste");
+        usuario.setEmail("teste@gmail.com");
+
+        usuarioService.incluir(usuario);
+
+
+
+
 
         try {
             try {

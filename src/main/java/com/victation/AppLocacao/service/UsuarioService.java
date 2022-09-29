@@ -19,7 +19,7 @@ public class UsuarioService {
     public Usuario validar(String email, String senha){
 
     //TODO criar a busca por email para retorno o ID
-    Optional<Usuario> usuario = usuarioRepository.findById(1);
+    Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
 
 
         if (usuario != null && usuario.get() !=null && usuario.get().getSenha().equals(senha)){

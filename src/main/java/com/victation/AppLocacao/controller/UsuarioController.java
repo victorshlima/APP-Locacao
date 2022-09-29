@@ -40,10 +40,10 @@ public class UsuarioController {
         return "usuario/cadastro";
     }
 
-    @GetMapping("/usuario/{email}/excluir")
+    @GetMapping("/usuario/{id}/excluir")
     public String excluir(@PathVariable Integer id){
         usuarioService.excluir(id);
-        System.out.println("excluido co sucesso" + id);
+        System.out.println("excluído com sucesso" + id);
         return "redirect:/usuario/lista";
     }
 

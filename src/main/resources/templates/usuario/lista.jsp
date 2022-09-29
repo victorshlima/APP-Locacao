@@ -52,12 +52,12 @@
         </thead>
     <tbody>
         <!--/*@thymesVar id="carroLista" type="java"*/-->
-        <tr th:each="c: ${usuarioLista}">
-            <td th:text="${c.nome}"></td>
-            <td th:text="${c.email}"></td>
-            <td th:text="${c.senha}" ></td>
+        <tr th:each="u: ${usuarioLista}">
+            <td th:text="${u.nome}"></td>
+            <td th:text="${u.email}"></td>
+            <td th:text="${u.senha}" ></td>
             <td>
-                <a th:href="@{/usuario/{email}/excluir(email=${c.email})}">excluir</a>
+                <a th:href="@{/usuario/{id}/excluir(id=${c.id})}">excluir</a>
             </td>
         </tr>
     </tbody>

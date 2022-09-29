@@ -15,25 +15,11 @@ public class AutomovelService {
     @Autowired
     private AutomovelRepository automovelRepository;
 
-    @Autowired
-    private  CarroService carroService;
-
-    @Autowired
-    private  CaminhaoService caminhaoService;
-
-    @Autowired
-    private  MotoService motoService;
-
-    List<Automovel> automoveis = new ArrayList<>();
-
     public List<Automovel> obterLista(){
-
-        automoveis.addAll(caminhaoService.obterLista());
-        automoveis.addAll(carroService.obterLista());
-        automoveis.addAll(motoService.obterLista());
-
-        return automoveis;
-
+        return (List<Automovel>) automovelRepository.findAll();
+    }
+    public List<Automovel> obterLista(Usuario user){
+        return (List<Automovel>) automovelRepository.findAll(user.getId());
     }
 
     public  void excluir(Integer id){

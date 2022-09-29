@@ -28,27 +28,30 @@ public class AutomovelController {
         automovelService.excluir(id);
     }
 
-    @GetMapping(value = "automovel")
+    @GetMapping(value = "/automovel")
     public String telaCadastro(){
         return "automovel/cadastro";
     }
 
-    @GetMapping("automovel/lista")
+    @GetMapping("/automovel/lista")
     public String telaLista (HttpServletRequest request, Model model){
         model.addAttribute("listagem", automovelService.obterLista());
-        return "automovel/lista";
+        return "/automovel/lista";
     }
 
-    @GetMapping("automovel/{id}/excluir")
+    @GetMapping("/automovel/{id}/excluir")
     public String exclusao(@PathVariable String id){
         excluir(Integer.valueOf(id));
         System.out.println("excluido co sucesso" + id);
-        return "redirect:automovel/lista";
+
+
+
+        return "redirect:/automovel/lista";
     }
     @PostMapping(value ="automovel/incluir" )
     public String incluir(Automovel automovel, @SessionAttribute("user")Usuario user){
         automovelService.incluir(automovel, user);
-        return  "redirect:automovel/lista";
+        return  "redirect:/automovel/lista";
     }
 
 

@@ -1,12 +1,9 @@
 package com.victation.AppLocacao.model.test;
 
-import com.victation.AppLocacao.AppLocacao;
-import com.victation.AppLocacao.controller.AppLocacaoController;
 import com.victation.AppLocacao.model.domain.app.Atributo;
 import com.victation.AppLocacao.model.domain.app.Classe;
 import com.victation.AppLocacao.model.domain.app.Projeto;
 import com.victation.AppLocacao.service.AppService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;

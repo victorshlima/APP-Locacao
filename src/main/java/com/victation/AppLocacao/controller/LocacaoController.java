@@ -1,5 +1,6 @@
 package com.victation.AppLocacao.controller;
 
+import com.victation.AppLocacao.model.domain.Automovel;
 import com.victation.AppLocacao.model.domain.Locacao;
 import com.victation.AppLocacao.model.domain.Locatario;
 import com.victation.AppLocacao.model.test.AppImpressao;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -29,10 +31,18 @@ public class LocacaoController {
         this.automovelService = automovelService;
     }
 
-    public void incluir(Locacao locacao){
+    @PostMapping("/locacao/incluir")
+    public String incluir(Locacao locacao){
         locacao.setId(id++);
         locacaoService.incluir(locacao);
+
+        for (Automovel automovel : locacao.getAutomoveis()){
+           // System.out.println(automovel.getId());
+            System.out.println(automovel.getMarca());
+        }
+
         AppImpressao.relatorio("\n Locacao " + locacao.getDescricao() + " incuido com sucesso", locacao  );
+        return "redirect:/locacao/lista";
     }
 
     public  void excluir(Integer id){

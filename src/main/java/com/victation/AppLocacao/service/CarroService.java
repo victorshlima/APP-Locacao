@@ -19,6 +19,7 @@ public class CarroService {
     public Collection<Carro> obterLista(){
         return (Collection<Carro>) carroRepository.findAll();
     }
+
     public Collection<Carro> obterLista(Usuario user){
         return (Collection<Carro>) carroRepository.findAll(user.getId());
     }

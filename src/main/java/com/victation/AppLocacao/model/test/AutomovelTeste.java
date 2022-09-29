@@ -2,10 +2,9 @@ package com.victation.AppLocacao.model.test;
 
 
 import com.victation.AppLocacao.model.domain.*;
-import com.victation.AppLocacao.service.AutomovelService;
-import com.victation.AppLocacao.service.CarroService;
-import com.victation.AppLocacao.service.LocacaoService;
-import com.victation.AppLocacao.service.UsuarioService;
+import com.victation.AppLocacao.model.repository.AutomovelRepository;
+import com.victation.AppLocacao.model.repository.UsuarioRepository;
+import com.victation.AppLocacao.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -30,7 +29,21 @@ public class AutomovelTeste implements ApplicationRunner  {
     @Autowired
     private UsuarioService usuarioService;
 
+    @Autowired
+    private  CarroService carroService;
 
+    @Autowired
+    private CaminhaoService caminhaoService;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+    @Autowired
+    private AutomovelRepository automovelRepository;
+
+    List<Automovel> automoveis = new ArrayList<>();
+
+    @Autowired
+    private  MotoService motoService;
     private static Integer id =1;
 
     @Override
@@ -41,10 +54,7 @@ public class AutomovelTeste implements ApplicationRunner  {
         String fileName =dir + arq;
         System.out.println(fileName);
 
-        Usuario usuario = new Usuario();
-        usuario.setNome("teste");
-        usuario.setSenha("teste");
-        usuario.setEmail("teste");
+        Usuario usuario = usuarioRepository.findById(1).get();
         usuarioService.incluir(usuario);
 
 
@@ -126,6 +136,11 @@ public class AutomovelTeste implements ApplicationRunner  {
             System.out.println("terminou");
         }
 
+
+        automoveis.addAll(caminhaoService.obterLista());
+        automoveis.addAll(carroService.obterLista());
+        automoveis.addAll(motoService.obterLista());
+        automovelRepository.saveAll(automoveis);
 
         System.out.println("#################################################################");
         System.out.println("#################################################################");
