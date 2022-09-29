@@ -3,6 +3,7 @@ package com.victation.AppLocacao.controller;
 import com.victation.AppLocacao.model.domain.Automovel;
 import com.victation.AppLocacao.model.domain.Locacao;
 import com.victation.AppLocacao.model.domain.Locatario;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.model.test.AppImpressao;
 import com.victation.AppLocacao.service.AutomovelService;
 import com.victation.AppLocacao.service.LocacaoService;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -32,8 +34,8 @@ public class LocacaoController {
     }
 
     @PostMapping("/locacao/incluir")
-    public String incluir(Locacao locacao){
-        locacao.setId(id++);
+    public String incluir(Locacao locacao, @SessionAttribute("user") Usuario user){
+        locacao.setUsuario(user);
         locacaoService.incluir(locacao);
 
         for (Automovel automovel : locacao.getAutomoveis()){

@@ -34,8 +34,8 @@ public class AutomovelController {
     }
 
     @GetMapping("/automovel/lista")
-    public String telaLista (HttpServletRequest request, Model model){
-        model.addAttribute("listagem", automovelService.obterLista());
+    public String telaLista (HttpServletRequest request, Model model, @SessionAttribute("user") Usuario user){
+        model.addAttribute("listagem", automovelService.obterLista(user));
         return "/automovel/lista";
     }
 

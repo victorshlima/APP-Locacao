@@ -7,6 +7,7 @@
 </head>
 <body>
 
+
 <div class="container mt-3">
     <h2> Cadstramento de locacao</h2>
 
@@ -17,16 +18,19 @@
             <label for="descricao" class="form-label">descricao:</label>
             <input type="text" class="form-control" id="descricao" placeholder="Entre com seu Nome" name="descricao">
         </div>
-        <div class="mb-3 mt-3">
+        <div th:if="${locatarios} != null"  class="mb-3 mt-3">
             <label>locatario:</label>
             <select name="locatario" class="form-control" id="dropDownList">
                 <option value="0">select locatario</option>
-                <option th:each="locatario : ${locatarios}" th:value="${locatario.id}"
+                <option name="locatario" th:each="locatario : ${locatarios}" th:value="${locatario.id}"
                         th:text="${locatario.nome}"></option>
             </select>
         </div>
+        <div th:if="${locatarios} == null"  class="mb-3 mt-3">
+            <label>Não existem locatarios cadastrados</label>
+        </div>
         <h3>Classe: Automovel</h3>
-        <table class="table table-dark table-striped">
+        <table th:if="${automoveis} != null"  class="table table-dark table-striped">
             <thead>
             </thead>
             <tbody>
@@ -38,7 +42,10 @@
             </tr>
             </tbody>
         </table>
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <div th:if="${automoveis} == null"  class="mb-3 mt-3">
+            <label>Não existem automoveis cadastrados</label>
+        </div>
+        <button th:disabled="${locatarios == null || automoveis == null }" type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
 </div>
 
