@@ -43,8 +43,8 @@ public class UsuarioController {
     }
 
     @GetMapping("/usuario")
-    public String telaCadastro (Model model,  @SessionAttribute("user") Usuario user){
-        model.addAttribute("user", user);
+    public String telaCadastro ( ){
+
         return "usuario/cadastro";
 
     }
