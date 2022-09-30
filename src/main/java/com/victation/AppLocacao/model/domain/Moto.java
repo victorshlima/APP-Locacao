@@ -13,6 +13,7 @@ public class Moto extends Automovel {
     private Integer id;
     private int peso;
     private String  tipoRoda;
+    private float valor;
 
     public Moto(Integer id, int peso, String tipoRoda) {
         this.id = id;
@@ -49,6 +50,7 @@ public class Moto extends Automovel {
         this.tipoRoda = tipoRoda;
     }
 
+
     @Override
     public float calcularValorLocacao() throws ValorMotoInvalidoException {
 
@@ -68,15 +70,8 @@ public class Moto extends Automovel {
     @Override
     public String toString() {
         return "Moto{" +
-                "marca='" + marca + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", cilindradas=" + cilindradas +
-                ", valor=" + valor +
-                ", chassi=" + chassi +
-                ", placa='" + placa + '\'' +
-                ", lotacao=" + lotacao +
-                ", qtdVeiculos=" + qtdVeiculos +
-                ", qtdVeiculosDisponiveis=" + qtdVeiculosDisponiveis +
+                "peso:" + peso +
+                "tipoRoda" + tipoRoda +
                 ":" + super.toString() +
                 '}';
     }

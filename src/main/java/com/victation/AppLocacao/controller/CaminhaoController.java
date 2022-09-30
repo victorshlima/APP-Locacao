@@ -27,7 +27,6 @@ public class CaminhaoController {
     @GetMapping(value = "/caminhao")
     public String telaCadastro(Model model, @SessionAttribute("user") Usuario user){
         model.addAttribute("user", user);
-
         return "caminhao/cadastro";
     }
 

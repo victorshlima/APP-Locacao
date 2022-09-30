@@ -10,14 +10,14 @@ import javax.persistence.*;
 @Table
 public class Caminhao extends Automovel{
 
-     //http://www.guiadotrc.com.br/noticias/noticiaID.asp?id=36008
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
+    private Integer id;
 
-    public String tipo; //enum - Toco - Truck - VUC ...
-    public int eixos;
-    public int capacidadeCarga;
+    private String tipo; //enum - Toco - Truck - VUC ...
+    private int eixos;
+    private int capacidadeCarga;
+    private float valor;
 
     public Caminhao(Integer id, String tipo, int eixos, int capacidadeCarga) {
         this.id = id;
@@ -49,8 +49,13 @@ public class Caminhao extends Automovel{
                 '}';
     }
 
+    public float getValor() {
+        return valor;
+    }
 
-
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
 
     @Override
     public Integer getId() {

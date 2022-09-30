@@ -5,8 +5,6 @@ import com.victation.AppLocacao.interfaces.IPrinter;
 import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInvalidoException;
 import com.victation.AppLocacao.model.domain.exeptions.ValorEixosInvalidoException;
 import com.victation.AppLocacao.model.domain.exeptions.ValorMotoInvalidoException;
-//import lombok.Data;
-
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -18,15 +16,10 @@ public abstract class  Automovel  implements IPrinter { // autmovel por sere abs
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id;
-
+    private Integer id;
     public String marca;
     public String modelo;
     public int cilindradas;
-    public Float valor;
-    public int chassi;
-    public String placa;
-    public int lotacao;
     public int qtdVeiculos;
     public int qtdVeiculosDisponiveis;
 
@@ -48,26 +41,24 @@ public abstract class  Automovel  implements IPrinter { // autmovel por sere abs
                 "marca='" + marca + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", cilindradas=" + cilindradas +
-                ", valor=" + valor +
-                ", chassi=" + chassi +
-                ", placa='" + placa + '\'' +
-                ", lotacao=" + lotacao +
                 '}';
     }
 
     public abstract void impressao();
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Automovel)) return false;
         Automovel automovel = (Automovel) o;
-        return chassi == automovel.chassi;
+        return cilindradas == automovel.cilindradas && qtdVeiculos == automovel.qtdVeiculos && qtdVeiculosDisponiveis == automovel.qtdVeiculosDisponiveis && Objects.equals(id, automovel.id) && Objects.equals(marca, automovel.marca) && Objects.equals(modelo, automovel.modelo) && Objects.equals(locacoes, automovel.locacoes) && Objects.equals(usuario, automovel.usuario);
     }
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(chassi);
+        return Objects.hash(id, marca, modelo, cilindradas, qtdVeiculos, qtdVeiculosDisponiveis, locacoes, usuario);
     }
 
     public List<Locacao> getLocacoes() {
@@ -116,38 +107,6 @@ public abstract class  Automovel  implements IPrinter { // autmovel por sere abs
 
     public void setCilindradas(int cilindradas) {
         this.cilindradas = cilindradas;
-    }
-
-    public Float getValor() {
-        return valor;
-    }
-
-    public void setValor(Float valor) {
-        this.valor = valor;
-    }
-
-    public int getChassi() {
-        return chassi;
-    }
-
-    public void setChassi(int chassi) {
-        this.chassi = chassi;
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public int getLotacao() {
-        return lotacao;
-    }
-
-    public void setLotacao(int lotacao) {
-        this.lotacao = lotacao;
     }
 
     public int getQtdVeiculos() {

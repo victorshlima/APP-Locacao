@@ -59,11 +59,6 @@
 </div>
 <div class="container mt-3">
     <h3>Classe: Automovel</h3>
-    <h4>
-        <td>
-            <a th:href="@{/caminhao}">novo</a>
-        </td>
-    </h4>
     <table class="table table-dark table-striped">
         <thead>
         <tr>

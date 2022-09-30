@@ -69,7 +69,7 @@
     </div>
 
     <div class="mb-3 mt-3">
-        <label for="sobrenome" class="form-label">Cpf:</label>
+        <label for="sobrenome" class="form-label">sobrenome:</label>
         <input type="text" class="form-control" id="sobrenome" placeholder="Entre com seu sobrenome" name="sobrenome">
     </div>
 

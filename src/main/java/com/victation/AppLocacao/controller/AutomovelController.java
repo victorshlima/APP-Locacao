@@ -23,21 +23,17 @@ public class AutomovelController {
         this.automovelService = automovelService;
     }
 
-    @GetMapping(value = "/automovel")
-    public String telaCadastro(@SessionAttribute("user") Usuario user, Model model){
-        model.addAttribute("user", user);
-        return "automovel/cadastro";
-    }
-
     @GetMapping("/automovel/lista")
     public String telaLista ( Model model, @SessionAttribute("user") Usuario user){
         model.addAttribute("listagem", automovelService.obterLista(user));
         model.addAttribute("user", user);
+        model.addAttribute("mensagem", mensagem);
+        model.addAttribute("tipo", tipo);
         return "/automovel/lista";
     }
 
     @GetMapping("/automovel/{id}/excluir")
-    public String exclusao(@PathVariable Integer id){
+    public String excluir(@PathVariable Integer id){
         try {
             automovelService.excluir(id);
             mensagem = "Exclusão realizada com sucesso: " + id;
@@ -48,13 +44,7 @@ public class AutomovelController {
 
         return "redirect:/automovel/lista";
     }
-    @PostMapping(value ="automovel/incluir" )
-    public String incluir(Automovel automovel, @SessionAttribute("user")Usuario user){
-        automovelService.incluir(automovel, user);
-        mensagem = "Inclusão realizada com sucesso: " + automovel;
-        tipo = "sucess";
-        return  "redirect:/automovel/lista";
-    }
+
 
 
 }

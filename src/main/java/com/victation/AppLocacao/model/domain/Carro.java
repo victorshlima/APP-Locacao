@@ -11,6 +11,7 @@ public class Carro extends Automovel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     public int portas;
+    private float valor;
 
     public Carro(Integer id, String marca, String modelo, int portas) {
         super();
@@ -62,5 +63,11 @@ public class Carro extends Automovel {
         this.portas = portas;
     }
 
+    public float getValor() {
+        return valor;
+    }
 
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
 }
