@@ -18,38 +18,46 @@ import java.util.Map;
 public class CaminhaoController {
 
     private final CaminhaoService caminhaoService;
-
+    private String mensagem;
+    private String tipo;
     public CaminhaoController(CaminhaoService caminhaoService) {
         this.caminhaoService = caminhaoService;
     }
 
-    public void excluir(Integer id){
-        caminhaoService.excluir(id);
-    }
-
     @GetMapping(value = "/caminhao")
-    public String telaCadastro(){
+    public String telaCadastro(Model model, @SessionAttribute("user") Usuario user){
+        model.addAttribute("user", user);
+
         return "caminhao/cadastro";
     }
 
     @GetMapping("/caminhao/lista")
     public String telaLista (Model model, @SessionAttribute("user") Usuario user){
-
         model.addAttribute("listagem", caminhaoService.obterLista(user));
+        model.addAttribute("mensagem", mensagem);
+        model.addAttribute("tipo", tipo);
+        model.addAttribute("user", user);
         return "/caminhao/lista";
-    }
-
-    @GetMapping("/caminhao/{id}/excluir")
-    public String exclusao(@PathVariable String id){
-        excluir(Integer.valueOf(id));
-        System.out.println("excluido co sucesso" + id);
-        return "redirect:/caminhao/lista";
     }
 
     @PostMapping(value ="/caminhao/incluir" )
     public String incluir(Caminhao caminhao, @SessionAttribute("user")Usuario user){
         caminhaoService.incluir(caminhao, user);
+        mensagem = "Inclusão realizada com sucesso: " + caminhao;
+        tipo = "sucess";
         return  "redirect:/caminhao/lista";
+    }
+
+    @GetMapping(value = "/caminhao/{id}/excluir")
+    public String excluir(@PathVariable Integer id) {
+        try {
+            caminhaoService.excluir(id);
+            mensagem = "Exclusão realizada com sucesso: " + id;
+        } catch (Exception e) {
+            mensagem = "Impossível excluir:" + id;
+            tipo = "danger";;
+        }
+        return "redirect:/caminhao/lista";
     }
 
 }

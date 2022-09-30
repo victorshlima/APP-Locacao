@@ -1,11 +1,8 @@
 package com.victation.AppLocacao.model.domain;
 
-
-
 import com.victation.AppLocacao.model.domain.exeptions.ValorMotoInvalidoException;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table
@@ -15,13 +12,11 @@ public class Moto extends Automovel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private int peso;
-    private int ano;
     private String  tipoRoda;
 
-    public Moto(Integer id, int peso, int ano, String tipoRoda) {
+    public Moto(Integer id, int peso, String tipoRoda) {
         this.id = id;
         this.peso = peso;
-        this.ano = ano;
         this.tipoRoda = tipoRoda;
     }
 
@@ -44,14 +39,6 @@ public class Moto extends Automovel {
 
     public void setPeso(int peso) {
         this.peso = peso;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
     }
 
     public String getTipoRoda() {

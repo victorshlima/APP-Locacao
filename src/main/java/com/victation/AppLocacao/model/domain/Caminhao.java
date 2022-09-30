@@ -4,10 +4,6 @@ package com.victation.AppLocacao.model.domain;
 import com.victation.AppLocacao.model.domain.exeptions.ValorEixosInvalidoException;
 
 import javax.persistence.*;
-//import lombok.AllArgsConstructor;
-//import lombok.Builder;
-//import lombok.Data;
-//import lombok.NoArgsConstructor;
 
 
 @Entity

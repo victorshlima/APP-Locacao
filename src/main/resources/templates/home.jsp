@@ -30,6 +30,9 @@
                 <a class="nav-link" href="/carro/lista">carro</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/moto/lista">moto</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/locacao/lista">locacao</a>
             </li>
             <li class="nav-item">
@@ -45,14 +48,10 @@
                 <a class="nav-link active" href="/login">Login</a>
             </li>
         </ul>
-
         <ul th:if="${user} != null" class="nav nav-tabs">
-
-
-                        <li class="nav-item">
-                            <a th:text="'Logout '+${user.nome}" class="nav-link" href="/logout">Logout</a>
-                        </li>
-
+            <li class="nav-item">
+                <a th:text="'Logout '+${user.nome}" class="nav-link" href="/logout">Logout</a>
+            </li>
         </ul>
     </div>
 </nav>

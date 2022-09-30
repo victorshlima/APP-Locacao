@@ -8,9 +8,15 @@
 <body>
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <div class="container-fluid">
+
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="/">Home</a>
+            </li>
+        </ul>
+        <ul th:if="${user} != null" class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/usuario/lista">Usuario</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/automovel/lista">automovel</a>
@@ -22,25 +28,42 @@
                 <a class="nav-link" href="/carro/lista">carro</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/moto/lista">moto</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/locacao/lista">locacao</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/locatario/lista">locatario</a>
             </li>
         </ul>
+
+        <ul th:if="${user} == null" class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="/usuario">Signup</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/login">Login</a>
+            </li>
+        </ul>
+        <ul th:if="${user} != null" class="nav nav-tabs">
+            <li class="nav-item">
+                <a th:text="'Logout '+${user.nome}" class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
     </div>
 </nav>
 
+<div th:if="${mensagem} != null"   class="alert alert-info">
+    <strong th:text="${mensagem}">Informação</strong>
+</div>
 <div class="container mt-3">
-
-
+    <h3>Usuario: Usuario</h3>
     <h4>
         <td>
             <a th:href="@{/usuario}">novo</a>
         </td>
     </h4>
-
-    <h3>Usuario: Usuario</h3>
     <table class="table table-dark table-striped">
         <thead>
         <tr>
@@ -57,7 +80,7 @@
             <td th:text="${u.email}"></td>
             <td th:text="${u.senha}" ></td>
             <td>
-                <a th:href="@{/usuario/{id}/excluir(id=${c.id})}">excluir</a>
+                <a th:href="@{/usuario/{id}/excluir(id=${u.id})}">excluir</a>
             </td>
         </tr>
     </tbody>

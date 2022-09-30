@@ -77,7 +77,6 @@ public class AutomovelTeste implements ApplicationRunner  {
                                 Moto moto = new Moto(
                                         Integer.valueOf(campos[1]),
                                         Integer.valueOf(campos[2]),
-                                        Integer.valueOf(campos[3]),
                                         campos[4]
                                 );
 

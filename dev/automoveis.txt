@@ -1,6 +1,6 @@
-M;1;100;2022;xb1
-M:2;200;2022;xb1
-M:3;300;2022;xb1
+M;1;100;tipo A;xb1
+M:2;200;tipo C;xb1
+M:3;300;tipo C;xb1
 C;1;BMW;magnata;2022;2
 C;2;Ferrari;xpto;2022;2
 C;3;Ferrari;cosmos;2022;4

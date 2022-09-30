@@ -16,8 +16,6 @@ import java.io.IOException;
 public class UsuarioTeste implements ApplicationRunner {
 
     private final UsuarioService usuarioService;
-
-
     public UsuarioTeste(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
@@ -35,12 +33,7 @@ public class UsuarioTeste implements ApplicationRunner {
         usuario.setNome("teste");
         usuario.setSenha("teste");
         usuario.setEmail("teste@gmail.com");
-
         usuarioService.incluir(usuario);
-
-
-
-
 
         try {
             try {

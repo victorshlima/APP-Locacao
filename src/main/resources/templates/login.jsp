@@ -8,8 +8,8 @@
 <body>
 
 
-<div class="container mt-3">
 
+<div class="container mt-3">
     <nav th:fragment="menu/menu.jsp :: navbar"> </nav>
 
     <h2>Login</h2>

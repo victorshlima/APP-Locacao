@@ -6,11 +6,18 @@
     <title>AppEmprestimo</title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
     <div class="container-fluid">
+
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" href="/">Home</a>
+            </li>
+        </ul>
+        <ul th:if="${user} != null" class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/usuario/lista">Usuario</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/automovel/lista">automovel</a>
@@ -22,7 +29,7 @@
                 <a class="nav-link" href="/carro/lista">carro</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/automovel/lista">automovel</a>
+                <a class="nav-link" href="/moto/lista">moto</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/locacao/lista">locacao</a>
@@ -31,20 +38,39 @@
                 <a class="nav-link" href="/locatario/lista">locatario</a>
             </li>
         </ul>
+
+        <ul th:if="${user} == null" class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="/usuario">Signup</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/login">Login</a>
+            </li>
+        </ul>
+        <ul th:if="${user} != null" class="nav nav-tabs">
+            <li class="nav-item">
+                <a th:text="'Logout '+${user.nome}" class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
     </div>
 </nav>
-
+<div th:if="${mensagem} != null"   class="alert alert-info">
+    <strong th:text="${mensagem}">Informação</strong>
+</div>
 <div class="container mt-3">
-
-
     <h3>Classe: Automovel</h3>
+    <h4>
+        <td>
+            <a th:href="@{/caminhao}">novo</a>
+        </td>
+    </h4>
     <table class="table table-dark table-striped">
         <thead>
         <tr>
             <th>id</th>
             <th>marca</th>
             <th>modelo</th>
-            <th>ação</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -57,7 +83,6 @@
             </td>
         </tr>
         </tr>
-
         </tbody>
     </table>
 </div>

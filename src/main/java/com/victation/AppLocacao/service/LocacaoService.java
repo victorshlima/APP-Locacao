@@ -1,6 +1,7 @@
 package com.victation.AppLocacao.service;
 
 import com.victation.AppLocacao.model.domain.Locacao;
+import com.victation.AppLocacao.model.domain.Usuario;
 import com.victation.AppLocacao.model.repository.LocacaoRepository;
 import com.victation.AppLocacao.model.test.AppImpressao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class LocacaoService {
 
     public Collection<Locacao> obterLista(){
         return (Collection<Locacao>) locacaoRepository.findAll();
+    }
+
+    public Collection<Locacao> obterLista(Usuario usuer){
+        return (Collection<Locacao>) locacaoRepository.findAll(usuer.getId());
     }
 
     public  void excluir(Integer id){

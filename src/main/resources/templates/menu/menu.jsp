@@ -25,6 +25,9 @@
                 <a class="nav-link" href="/carro/lista">carro</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="/moto/lista">moto</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="/locacao/lista">locacao</a>
             </li>
             <li class="nav-item">

@@ -4,30 +4,18 @@ import com.victation.AppLocacao.model.domain.exeptions.QuantidadePortasCarroInva
 
 import javax.persistence.*;
 
-//import lombok.AllArgsConstructor;
-//import lombok.Builder;
-//import lombok.Data;
-//import lombok.NoArgsConstructor;
-//
-//
-//@Data
-//@Builder
-//@NoArgsConstructor
-//@AllArgsConstructor
 @Entity
 @Table
-public class Carro extends Automovel{
+public class Carro extends Automovel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     public int portas;
 
-
-
     public Carro(Integer id, String marca, String modelo, int portas) {
         super();
         this.id = id;
-        super.marca =marca;
+        super.marca = marca;
         super.modelo = modelo;
         this.portas = portas;
     }
@@ -46,12 +34,12 @@ public class Carro extends Automovel{
 
     @Override
     public float calcularValorLocacao() throws QuantidadePortasCarroInvalidoException {
-        if(portas >4){
-            throw new QuantidadePortasCarroInvalidoException("portas: " +portas+ " Maior que 4, Quantidade por portas invalida");
+        if (portas > 4) {
+            throw new QuantidadePortasCarroInvalidoException("portas: " + portas + " Maior que 4, Quantidade por portas invalida");
         }
 
-        return  getPortas() > 2 ?  valor * 3.5f  :  valor * 2.5f;
-    };
+        return getPortas() > 2 ? valor * 3.5f : valor * 2.5f;
+    }
 
     @Override
     public String toString() {
@@ -67,16 +55,12 @@ public class Carro extends Automovel{
         System.out.println(this);
     }
 
-
     public int getPortas() {
         return portas;
     }
-
     public void setPortas(int portas) {
         this.portas = portas;
     }
-
-
 
 
 }

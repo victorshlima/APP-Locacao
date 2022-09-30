@@ -41,8 +41,6 @@ public class AppLocacaoController {
         if( usuario != null){
             System.out.println("localizado login" + usuario.getEmail());
             model.addAttribute("user", usuario);
-            //  return "/";
-            //return "home";
             return "redirect:/";
         }
         return "login";
